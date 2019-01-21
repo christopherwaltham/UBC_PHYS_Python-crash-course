@@ -1,4 +1,4 @@
-# Python crash course
+# Python Cash Course
 A practical guide to using python in science developed by UBC Physics and Astronomy.
 
 # Instructions
