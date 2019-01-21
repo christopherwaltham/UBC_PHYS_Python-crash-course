@@ -48,7 +48,53 @@ To start working with Spyder, do the following:
 - Set the directory path (circled in the picture above) to where you want your code to be saved.
 
 ## Writing Python
-A beginners guide to Python, possibly containing references to external tutorials.
+A great resource for learning Python can be found [here](https://docs.python.org/2/tutorial/index.html).
+
+### Using python as a calculator
+The easiest thing you can do is use python as a calculator. You can for example write `2+2.5` or `2+10-5*10/2` and hit return on your keyboard to make Python compute the result.
+
+TODO: Order of operations?
+
+### Comments
+The Python interpreter will skip anything that comes after `#` on a line. You can use this to write notes about what you are doing in your code, which can be useful for human beings to read to understand what is going on. For example
+```python
+2**6 # is the python notation for exponentiation, ie. 2^6
+```
+
+### Assigning variables
+You can define variables by setting them equal to something:
+```python
+a = 1
+b = 2
+a+b # will now be equvalent to saying 1+2
+```
+
+You can update the value a variable contains by setting it equal to something else:
+```python
+a = 1
+a = 2
+a # will now be equal to 2, not 1
+```
+
+### Strings
+You can also set variables to be equal to text. For this to work, you need to surround the text with quotation-marks:
+```python
+a = "this is a string"
+b = " and this is another"
+a+b #  "this is a string and this is another"
+```
+
+substrings and searching in strings
+
+### Lists
+initialization and indexing
+
+### `If` statements
+### `While` loops
+### `For` loops
+### Functions
+### Classes?
+
 
 ## Interfacing with microcontroller
 These are instructions for using the serial interface etc.
