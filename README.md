@@ -1,4 +1,4 @@
-# UBC_PHYS_Python-crash-course
+# Python crash course
 A practical guide to using python in science developed by UBC Physics and Astronomy.
 
 # Instructions
