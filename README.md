@@ -53,7 +53,11 @@ A great resource for learning Python can be found [here](https://docs.python.org
 ### Using python as a calculator
 The easiest thing you can do is use python as a calculator. You can for example write `2+2.5` or `2+10-5*10/2` and hit return on your keyboard to make Python compute the result.
 
-TODO: Order of operations?
+Possible points to discuss:
+- Order of operations
+- Inequalities
+- Modulo operator
+- Exponentiation
 
 ### Comments
 The Python interpreter will skip anything that comes after `#` on a line. You can use this to write notes about what you are doing in your code, which can be useful for human beings to read to understand what is going on. For example
@@ -83,25 +87,44 @@ a = "this is a string"
 b = " and this is another"
 a+b #  "this is a string and this is another"
 ```
-
-substrings and searching in strings
+Possible points to discuss:
+- substrings
+- searching in strings
 
 ### Lists
 initialization and indexing
 
 ### `If` statements
+It is possible to have parts of code execute only when you want it to. It works like this:
+
+```python
+a = 5
+if a*3 is 0:
+    a = 2
+
+```
+
+Points that can be discussed here:
+- Indentation (Python syntax)
+- Variable scope
+
 ### `While` loops
 ### `For` loops
 ### Functions
-### Classes?
+
+Possible topics to cover next:
+- Classes
+- Standard library functions
+- Type system - Python weakly typed, but good to be aware of mechanisms
 
 
 ## Interfacing with microcontroller
 These are instructions for using the serial interface etc.
 
+# General questions
 
 ## What to bring?
-- Computer with Anaconda installed. Must provide instrucitons for installing Anaconda in this case. Download is about 650MB, so can take a bit of time on _UBC visitor_.
+- Computer with Anaconda installed. Must provide instrucitons for installing Anaconda in this case. Download is about 650MB, so can take a bit of time on _UBC Visitor_, but likely ok on _UBC Secure_.
 
 ## What to ask of prior experience
 - New to programming? Most important!
