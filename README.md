@@ -98,3 +98,11 @@ initialization and indexing
 
 ## Interfacing with microcontroller
 These are instructions for using the serial interface etc.
+
+
+## What to bring?
+- Computer with Anaconda installed. Must provide instrucitons for installing Anaconda in this case. Download is about 650MB, so can take a bit of time on _UBC visitor_.
+
+## What to ask of prior experience
+- New to programming? Most important!
+- New to Arduino?
