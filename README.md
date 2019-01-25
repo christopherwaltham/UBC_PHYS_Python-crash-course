@@ -124,11 +124,8 @@ These are instructions for using the serial interface etc.
 # General questions
 
 ## What to bring?
-<<<<<<< HEAD
 - Computer with Anaconda installed. Must provide instructions for installing Anaconda in this case. The download is about 650MB, so can take a bit of time on _ubcvisitor_ (but likely ok on _ubcsecure_).
-=======
-- Computer with Anaconda installed. Must provide instrucitons for installing Anaconda in this case. Download is about 650MB, so can take a bit of time on _UBC Visitor_, but likely ok on _UBC Secure_.
->>>>>>> master
+
 
 ## What to ask of prior experience?
 - New to programming? Most important!
