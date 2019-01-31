@@ -9,13 +9,13 @@ Anaconda is a package manager (program that helps you install all the things you
 
 ## Setting up a virtual environment
 Different projects might need to use different versions of Python. We will, therefore, set up "virtual environments" every time we want to run Python code, to make sure we are interfacing with the packages and installations we want.
-- Launch Anaconda (you will find Anaconda in launchpad (Mac) or your start menu (Windows)).
+- Launch Anaconda Navigator (you will find Anaconda in launchpad on Mac or your start menu on Windows).
 - Go to the "Environments" tab on the left-hand side of the screen.
-- Click "Create". The dialogue seen in this figure will appear:
+- Click the "Create" button at the bottom of the screen. The dialogue seen in this figure will appear:
 ![](Images/Anaconda1.png)
 - Give the environment a name of your choosing (for example "PHYS_TUT").
-- Select the check-box for Python and select 2.7 from the dropdown. This is the version of Python we are going to use.
-- Ensure R is unchecked.
+- Select the check-box for Python and select 2.7 from the dropdown (yes, 2.7, not 3.7, even though you downloaded the 3.7 release). This is the version of Python we are going to use.
+- Ensure R is unchecked. R is a comletely separate programming language focussed on statistics applications.
 - Hit "Create".
 
 You have now made your own environment. It may appear below your "base (root)" environment which is the global environment on your computer.
@@ -34,7 +34,7 @@ Spyder is a scientific Python development environment that makes it easy to writ
 - Find Spyder and click "Install". Wait until the installation is completed.
 
 To start working with Spyder, do the following:
-- Ensure the "Applications on" dropdown is set to the environment "PHYS_TUT" that we just created.
+- Ensure the "Applications on" dropdown on the top of the creen is set to the environment "PHYS_TUT" that we just created.
 - Hit "Launch" on Spyder.
 - You are now greeted with the Spyder interface. It consists of three parts:
   - Code editor: where you write your Python code

@@ -5,4 +5,6 @@ Use of ultrasonic distance sensor for data collection.
 
 
 ## Ploting Data
-Introduction to Matplotlib. 
+Introduction to Matplotlib.
+
+Next section: [Oscilloscope](/5.%20Oscilloscope/)

@@ -32,6 +32,9 @@ a = 2
 a # will now be equal to 2, not 1
 ```
 
+## Equality
+TODO
+
 ## Strings
 You can also set variables to be equal to text. For this to work, you need to surround the text with quotation marks:
 ```python
@@ -51,9 +54,8 @@ It is possible to have parts of code execute only when you want it to. It works 
 
 ```python
 a = 5
-if a*3 is 0:
+if a == 5:
     a = 2
-
 ```
 
 Points that can be discussed here:
@@ -61,10 +63,21 @@ Points that can be discussed here:
 - Variable scope
 
 ## `While` loops
+TODO
+
 ## `For` loops
+TODO
+
 ## Functions
+TODO
 
 Possible topics to cover next:
 - Classes
 - Standard library functions
 - Type system - Python weakly typed, but good to be aware of mechanisms
+
+## Exercises
+TODO: add
+
+
+Next section: [Arduino for Data Collection](/2.%20Arduino%20for%20Data%20Collection/)

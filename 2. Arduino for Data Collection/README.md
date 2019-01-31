@@ -3,7 +3,7 @@
 
 [Arduino](https://www.arduino.cc) is a platform of [microcontrollers](https://en.wikipedia.org/wiki/Microcontroller) that has a large user-base, and that is easy to work with. These microcontrollers are programmed in a language developed for the Arduino boards, which is closely related to the programming language called [C](https://en.wikipedia.org/wiki/C_(programming_language)). Learning two programming languages at once is not easy, so we have already uploaded code on the boards so that you can control it by sending it commands from Python.
 
-To communicate with the microcontroller, you will be using a [serialized communication](https://en.wikipedia.org/wiki/Serial_communication) method simply known as Serial. It encodes the information you want to send into a sequence of bits (zeros and ones) and sends them one by one through a single wire. Two more wires are also required: ground to give the computers a shared reference, and a clock to communicate when a new bit has been sent.
+To communicate with the microcontroller, you will be using a [serialized communication](https://en.wikipedia.org/wiki/Serial_communication) method simply known as Serial. It encodes the information you want to send into a sequence of bits (zeros and ones). These bits are sent over one wire from your computer to the Arduino, and over another wire from the Arduino to your computer so that both units can talk to each other. A third wire, known as gound, provides a common refference to these two data lines.
 
 Python has libraries that know how to decode information and send it over this serial link so that we do not need to know anything about how it is implemented. One of these libraries is called Arduino-Python.
 
@@ -47,10 +47,12 @@ Notice that we are connecting the LED to pin D13. This will be important in the 
 Now, you can control the Arduino by typing the following lines of code into Spyder. After starting the program, some seconds may pass, but then the LED should start flashing rapidly.
 
 ```python
-from Arduino import Arduino   # import library
+# import libraries
+from Arduino import Arduino
 import time
 
 board = Arduino('9600')       # find and connect microcontroller
+print('Connected')            # confirms the microcontroller has been found
 board.pinMode(13, "OUTPUT")   # configure pin 13 to be an output pin
 
 # enter infinite loop
@@ -65,3 +67,5 @@ If it does not work, it might be because the computer is not automatically able 
 
 ## The Arduino-Python Library
 The source for the Arduino-Python library can be found [here](https://github.com/thearn/Python-Arduino-Command-API). This repository includes a description of features and the source code that you can have a look at to figure out what other functions you can use with the Arduino board. In the next module, we will use the `pulseIn_set` function to measure the distance to objects using an ultrasonic range finder.
+
+Next section: [Ultrasonic Range Sensing](/3.%20Ultrasonic%20Range%20Sensing/)
