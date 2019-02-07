@@ -18,17 +18,15 @@ In our case, we will connect TRIG and ECHO to the same pin, as this will enable 
 
 Getting a distance measurement from the module works like this:
 - When you want to make a distance measurement, send a quick pulse to the sensor on the trigger line.
-- The sensor will send out a sound-pulse and wait for an echo to come back.
-- When the module detects an echo, it sends a pulse on the echo line.
-- The time difference between when the trigger pulse was sent and when the echo pulse returned can be used to determine how far the sound has traveled.
+- The ultrasonic module with use the speaker to send out a sound-pulse and wait for an echo to come back.
+- When the module detects an echo, it sends a pulse to the microcontroller over the ECHO wire.
+- The time difference between when the trigger pulse was transmitted and when the echo pulse returned can be used to determine how far the sound has traveled (distance = speed * time).
 
 
 ## Code
-### Get distance mesurnments
+### Get distance measurements
 
-In your code, you will need to keep track of how long it has taken from the trigger pulse was sent to the echo returns. We could write this functionality manually, but it is much easier to use a library function called `pulseIn_set`. This function sends a message to the Arduino to set the pin high, and start a timer. The function returns when a pulse has been recieved, providing the time (in microseconds) that the sound has spent traveling.
-
-
+In your code, you will need to keep track of how long it has taken from the trigger pulse was sent to the echo returns. We could write this functionality manually, but it is much easier to use a library function called `pulseIn_set`. This function sends a message to the Arduino to send a pulse (high indicates the pulse should be positive), and start a timer. The function returns when a pulse has been received with the time (in microseconds) that the sound has spent traveling.
 
 ```python
 from Arduino import Arduino
@@ -45,6 +43,8 @@ while True:
 
     time.sleep(1)
 ```
+
+### Calibrating
 
 ### Writing to file
 You can use the `csv` library to write data to a file. This can be very useful for data analysis later.
@@ -73,11 +73,11 @@ while True:
     time.sleep(0.5) # wait 0.5 seconds
 ```
 
-### Handeling exceptions
-Dealing with no pulse return to allways get clean output values
+### Handling exceptions
+Dealing with no pulse return to always get clean output values
 
 ## Calibrating time constant
-Look at time mesurnments and corresponding distance traveled by sound. Determine scaling factor and thereby find the speed of sound in air.
+Look at time measurements and corresponding distance traveled by sound. Determine scaling factor and thereby find the speed of sound in air.
 
 
 ## Complete sketch
