@@ -1,13 +1,23 @@
 # 3. Ultrasonic Range Sensing
 
 ## Theory
-The HC-SR04 is an inexpensive distance sensor that is easy to work with. It is uses two ultrasonic transducers, one acting as a speaker and one acting as a microphone. The left transducers emits a high frequency sound pulse that travels thorugh the air. When it hits a solid surface, these pulses are reflected back at the microphone. The time required for the sound to make the trip away and back is used to determine how far the sound has traveled, and thus how far away the obsticle is.
+The HC-SR04 is an inexpensive distance sensor that is easy to work with. It uses two ultrasonic transducers, one acting as a speaker and one serving as a microphone. The left transducers emit a high-frequency sound pulse that travels through the air. When it hits a solid surface, these pulses are reflected back towards the module. This echo is registered by the microphone. The time required for the sound to make the trip away and back is used to determine how far the sound has traveled, and thus the distance to the obstacle.
 
 ![](Images/sensor_operation.png)
 
 ## Sensor module
-The ultasonic sensor module makes it easy to get distance data. It has a 4 pin interface: two pins for power and ground, one pin for a trigger and one pin for the echo. It works like this:
-- When you want to make a distance mesurnment, send a quick pulse to the sensor on the trigger line.
+The ultrasonic sensor module makes it easy to get distance data by abstracting out a lot of the work associated with actuating the speaker and recognizing the echoes.
+
+It has a 4 pin interface:
+- PWR is power. It is connected to 5V.
+- GND is ground. It is connected to a ground pin of the microcontroller.
+- TRIG is the trigger pin. It is connected to a digital pin of the microcontroller.
+- ECHO is the echo pin. It is connected to a digital pin of the microcontroller.
+
+In our case, we will connect TRIG and ECHO to the same pin, as this will enable us to use a convenient function in the Arduino-Python library called `pulseIn_set`.
+
+Getting a distance measurement from the module works like this:
+- When you want to make a distance measurement, send a quick pulse to the sensor on the trigger line.
 - The sensor will send out a sound-pulse and wait for an echo to come back.
 - When the module detects an echo, it sends a pulse on the echo line.
 - The time difference between when the trigger pulse was sent and when the echo pulse returned can be used to determine how far the sound has traveled.
