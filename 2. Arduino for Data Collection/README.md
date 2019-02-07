@@ -37,13 +37,15 @@ The Arduino Nano as many pins that each can be configured to perform some action
 
 
 ### Circuit
-We are ready to connect the circuit below. Use a 100 ohm to 500 ohm resistor and connect the flat side of the LED to GND.
+We are ready to connect the circuit below. Connect a 100 ohm to 500 ohm resistor in series with the LED. This is to limit the current moving through the LED so that it does not overheat and get damanged.
+
+Make sure to connect the cathode of the diode to ground. The cathode is the side with the shortest leg and with a small flat notch on the diode housing.
 
 Notice that we are connecting the LED to pin D13. This will be important in the next step when we want to control this pin.
 
-![](Images/led_on_breadboard.jpg)
+![](Images/led_breadboard.png)
 
-## Quick user guide
+## Programming
 Now, you can control the Arduino by typing the following lines of code into Spyder. After starting the program, some seconds may pass, but then the LED should start flashing rapidly.
 
 ```python
@@ -64,6 +66,51 @@ while True:
 ```
 
 If it does not work, it might be because the computer is not automatically able to determine which USB port the Arduino is plugged into. Go to system settings to find the name of the port and change line 3 to `board = Arduino('9600', port='PORT_NAME')` where PORT_NAME is replaced by the port name that the Arduino is connected to on your computer. On a Windows machine, the port name is typical `COM3` or something similar, whereas on a Mac the port name typically will look like `/dev/tty.usbmodem143201`.
+
+
+## RBG LED
+We are now ready to look at an RGB LED. This is a device that contains both a red, green and blue LED in one package. Contorlling the relative brigtness of the different color-channels will enable us to display just about any color, making this a very cool decvice to play with.
+
+In order to be able to set the brightness of each pin, we will use the analog pins (marked with A folloed by a number) on the Arduino. These pins are able to output any voltage between 0V and 3.3V. We will later learn more about this feature.
+
+![](Images/rgb_led_breadboard.png)
+
+Connect the LED as shown below. You will not be able to control the color of the led as follows:
+TODO: Check example
+
+```python
+# import libraries
+from Arduino import Arduino
+import time
+
+board = Arduino('9600')       # find and connect microcontroller
+print('Connected')            # confirms the microcontroller has been found
+
+# give pins names so they are easy to refference
+RED   = A0
+GREEN = A1
+BLUE  = A2
+
+# configure A0, A1 and A2 as output pins
+board.pinMode(RED, "OUTPUT")
+board.pinMode(GREEN, "OUTPUT")
+board.pinMode(BLUE, "OUTPUT")
+
+while True:
+    board.analogWrite(RED, 255)     # set RED to full brightness (3.3V)
+    time.sleep(1)                   # wait 1 second
+
+    board.analogWrite(RED, 0)       # turn RED off
+    board.analogWrite(GREEN, 255)   # set GREEN to full brightness (3.3V)
+    time.sleep(1)                   # wait 1 second
+
+    board.analogWrite(GREEN, 0)       # turn RED off
+    board.analogWrite(BLUE, 255)   # set GREEN to full brightness (3.3V)
+    time.sleep(1)                   # wait 1 second
+```
+
+You can now modify the code to do what you want. Can you make the LED be yellow? What about making the color of the LED change gradualy?
+
 
 ## The Arduino-Python Library
 The source for the Arduino-Python library can be found [here](https://github.com/thearn/Python-Arduino-Command-API). This repository includes a description of features and the source code that you can have a look at to figure out what other functions you can use with the Arduino board. In the next module, we will use the `pulseIn_set` function to measure the distance to objects using an ultrasonic range finder.
