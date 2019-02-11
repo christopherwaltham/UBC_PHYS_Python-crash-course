@@ -45,6 +45,8 @@ while True:
 ```
 
 ### Calibrating
+By using a ruler, you can manually determine how far the sound has traveled
+
 
 ### Writing to file
 You can use the `csv` library to write data to a file. This can be very useful for data analysis later.
