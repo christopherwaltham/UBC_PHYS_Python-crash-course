@@ -248,7 +248,7 @@ You can declare a list of all numbers from zero to N by saying `range(N)`. This 
 ```python
 list = [0, 5, 8, 4, 6]
 for index in range(100):
-
+  # code
 ```
 
 ## Exercises
