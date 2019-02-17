@@ -44,4 +44,6 @@ To start working with Spyder, do the following:
 - After you have written some code you want to run, click the green play button at the top of the screen.
 - Set the directory path (circled in the picture above) to where you want your code to be saved.
 
-You have now got all you need to start writing Python! Go to the module [Learning Python](/1.%20Learning%20Python/) to continue.
+You have now got all you need to start writing Python! Go to the module next module to continue.
+
+Next: [Learning Python](/1.%20Learning%20Python/)
