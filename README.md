@@ -20,4 +20,4 @@ The training is divided into modules. Start with [module zero](/0.%20Setting%20u
 - to learn how to calibrate sensors and make/display/analyze measurements
 - to debug an electrical circuit with an oscilloscope
 
-Students will leave the workshop with Python running on their laptops, and each will have an Arduino Nano microcontroller, an ultrasound distance-measuring device, a breadboard, and cables to take away.
+You will leave the workshop with Python running on your laptop, and with an Arduino Nano microcontroller, an ultrasound distance-measuring device, a breadboard, and cables.
