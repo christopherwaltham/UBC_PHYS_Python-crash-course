@@ -1,7 +1,9 @@
 # 1. Learning Python
 There are two ways you can execute Python code:
 1. You can type instructions, line by line, into a Python console (such as the one in Spyder).
-2. If you have more lines of code you want to execute, you can type them into a file that you give a `.py` extension.
+2. You can type your instructions in a file that you give a `.py` extension. This is espcially usefull if you have many lines of code you want to execute.
+
+We will start by typing instrucitons direcly into the terminal in Syder. Afterwords, when we progress to more complex programs, we will start using the code editor make and run files.
 
 ## Using python as a calculator
 The easiest thing you can do is use python as a calculator. We will start by running this code directly from the Spyder Console window.
