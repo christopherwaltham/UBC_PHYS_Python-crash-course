@@ -7,13 +7,6 @@ To communicate with the microcontroller, you will be using a [serialized communi
 
 Python has libraries that know how to decode information and send it over this serial link so that we do not need to know anything about how it is implemented. One of these libraries is called Arduino-Python.
 
-## Installing Arduino-Python
-Arduino-Python is not available through the package manager in Anaconda. We, therefore, need to use _pip_, which is another package manager
- - Go to Anaconda and select the environments tab.
- - Click the play button next to the Python environment you set up earlier.
- - Click "Open Terminal".
- - Type `pip install arduino-python` followed by return.
- - The library should now be installed. Quit the Terminal/Command Line window, and return to Spyder.
 
 ## Connecting an LED to the microcontroller
 ### Breadboard
