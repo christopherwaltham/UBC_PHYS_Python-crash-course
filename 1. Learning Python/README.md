@@ -1,24 +1,20 @@
 # 1. Learning Python
 There are two ways you can execute Python code:
 1. You can type instructions, line by line, into a Python console (such as the one in Spyder).
-2. You can type your instructions in a file that you give a `.py` extension. This is espcially usefull if you have many lines of code you want to execute.
+2. You can type your instructions in a file that you give a `.py` extension. This is especially useful if you have many lines of code that you want to execute.
 
-We will start by typing instrucitons direcly into the terminal in Syder. Afterwords, when we progress to more complex programs, we will start using the code editor make and run files.
+We will start by typing instructions directly into the terminal in Syder. Afterward, when we progress to more complex programs, we will use the code editor to make files.
+
+Launch Spyder through Anaconda. See the last section of [module 0](0.%20Setting%20up%20the%20Tools) if you are unsure how to do this.
 
 ## Using python as a calculator
-The easiest thing you can do is use python as a calculator. We will start by running this code directly from the Spyder Console window.
+The easiest thing you can do with Python is to use it as a calculator. We will start by running this code directly from the Spyder Console window.
 
-Launch Spyder through Anaconda. The lower right section of the Spyder window is the Console. Click on the console, and you are ready to type commands.
+The lower right section of the Spyder window is the Console. Click on the console, and you are ready to type commands.
 
 You can, for example, write `2+2` or `2+10-5*10/2` and hit return on your keyboard to make Python compute the result. This is how my screen looks after having executed these commands:
 
 ![](Images/spyder_console.png)
-
-Possible points to discuss:
-- Order of operations
-- Inequalities
-- Modulo operator
-- Exponentiation
 
 ## Assigning variables
 You can define variables by setting them equal to something:
@@ -40,7 +36,7 @@ If you want to check if two variables have the same value, you can do this using
 ```python
 a = 2
 b = 4
-a == b # False
+a == b   # False
 a+a == b # True
 ```
 
@@ -74,7 +70,7 @@ a[1:]   # all characters except the first
 ```
 
 ## Lists
-In the same way that you can collect characters in a string, you can other types of data (such as numbers) in a list. Lists are very powerful if you need to store large amounts of data.
+In the same way that you can collect characters in a string, you can collect other types of data (such as numbers) in a list. Lists are very powerful if you need to store large amounts of data.
 
 If you know what values you want to store in your list, you can initialize a new list by surrounding your numbers with square brackets, and separating them by commas:
 
@@ -85,7 +81,7 @@ numbers = [1, 2, 3, 40, 500]
 As with strings, you can access individual elements in the list by saying
 ```python
 numbers[0]   # returns the first element in the list
-numbers[3:4] # returns the fourth and fifth element in the list as a list
+numbers[2:4] # returns the third and fourth element in the list as a list
 ```
 
 If you want to add a number to your list, you can use the `append()` method:
@@ -94,18 +90,51 @@ numbers.append(2)
 numbers # print all values in numbers
 ```
 
-You can find the length of a list or the sum of a list by doing
+You can find the length of a list and the sum of a list by doing
 ```python
 len(numbers) # works for any list
-sum(numbers) # works only if the data-types stored in the list supports addition
+sum(numbers) # works only if the data-types stored in the list is a number
 ```
 
 Thus, you can compute the mean of your list by
 ```python
 mean = sum(numbers) / len(numbers)
+mean # prints the variable to the screen
+# There is a problem here - can you spot it? See the next section on data-types.
 ```
 
 These are just a few things that you can do with numbers and lists. For more information, you can, for example, search the web for "python lists". You will find lots of great information, such as [this article from Google for Education](https://developers.google.com/edu/python/lists).
+
+
+## Data-types
+Do you notice something strange when computing the average above? If your mean is not a whole number, Python will return the largest integer value less than the mean. This is because each variable has a type associated with it. The two types of interest here are:
+- Integers: whole numbers (can be positive or negative)
+- Floats: numbers with decimal places
+
+When you declare a variable and set it equal to a whole number (without any decimal places) Python automatically interprets that as an integer. If you input a number with decimal places, Python interprets it as a float.
+
+```python
+a = 1   # stored as integer
+b = 1.0 # stored as a float
+```
+
+When dividing two integers by each other, the result is an integer. Therefore, we lose the information about decimal places. This is called truncation, as Python will not round to the nearest integer, but chop off all the decimal places from the number.
+
+On the other hand, if one or both of the numbers are floats, the result will be a float evaluated from a floating point division.
+
+```python
+3/4        # evaluates to 0
+3.0/4      # evaluates to 0.75
+3/4.0      # evaluates to 0.75
+float(3)/4 # evaluates to 0.75
+float(3/4) # evaluates to 0.0, can you figure out why?
+```
+
+So, to fix the issue when computing the mean from earlier, we can say one of the following:
+```python
+float(sum(numbers)) / len(numbers)
+sum(numbers) / float(len(numbers))
+```
 
 ## Writing code in a file
 If you want to make more complicated programs with commands that span across multiple lines, it is easier to have the code in a file rather than typing it into the terminal. You can do this as follows:
@@ -168,7 +197,7 @@ if a == 5: # evaluates to False
 print(a)   # a is still 2
 ```
 
-Python is a special language in that how you indent your lines (how many spaces you have before the first character on a line) matters. Therefore, the code below is different from the code above.
+Python is a special language in that how you indent your lines (how many spaces you have before the first character on a line) matters. Therefore, the code below will print the value of _a_ only if the `if` block is executed.
 
 ```python
 a = 5
@@ -181,7 +210,7 @@ if a == 5:
 If you want to execute the same lines of code many times in a row, loops are handy.
 
 ### `While` loops
-The `while` loop works a bit like the `if` statement, with the one difference that the `while` loop will continue to execute the while block until the condition becomes `False`.
+The `while` loop works a bit like the `if` statement. The difference is that the `while` loop will continue to execute the while block until the condition becomes `False`.
 
 In the following code, for example, we print the numbers from 0 to 5.
 
@@ -202,11 +231,13 @@ for item in list:
 ```
 
 ## Functions
-To make their code more readable and easy to reuse, programmers use functions. This a very powerful concept that enables the programmer to do a lot of computation by calling a function in one line of code, without needing to know the exact details of how the function works. You have used multiple functions already. `Print()` is a function in Python that prints what you pass to it (what is inside the parenthesis) to the console. `len()` and `sum()` are other functions.
+To make their code more readable and easy to reuse, programmers use functions. This a very powerful concept that enables us to do a lot of computation by calling a function in one line of code. It means that we do not need to know the exact details of how the function works.
+
+You have used multiple functions already. `Print()` is a function in Python that prints what you pass to it (what is inside the parenthesis) to the console. `len()` and `sum()` are other functions.
 
 There are a few rules for defining Python functions:
 - Function blocks begin with the keyword `def` followed by the function name, parentheses and a colon.
-- Variables can be passed to the function by placing them inside the parenthesis. They are called function arguments or parameters.
+- Variables can be passed to the function by placing them inside the parenthesis. They are called function arguments or parameters. If you have multiple arguments, separate them using commas.
 - The code block within every function is indented.
 - The statement `return` exits a function. If you want, you can add a return argument that will be passed back to the caller of the function. A return statement with no arguments is the same as return `None`.
 
@@ -215,6 +246,7 @@ In summary, a function looks like this:
 def functionName(argument1, argument2):
 
   # code
+  returnArgument = argument1 + argument2 # as an example
 
   return returnArgument
 ```
@@ -224,11 +256,13 @@ And you can call it by saying
 value = functionName(a, b)
 ```
 
-Inside the function, you will be able to access _a_ as _argument1_ and _b_ as _argument2_. After the function has completed executing, _value_ will have the same value as the variable _returnArgument_ that you returned in the function.
+- Inside the function, you will be able to access _a_ as _argument1_ and _b_ as _argument2_.
+- After the function has completed executing, _value_ will have the same value as the variable _returnArgument_ that you returned in the function.
 
 Let us take a look at a practical example:
 
 ```python
+# magnitude computes the length of a 2d vector specified by x and y
 def magnitude(x, y):
   m = (x**2 + y**2)**0.5
   return m
@@ -236,7 +270,7 @@ def magnitude(x, y):
 print(magnitude(3,4)) # prints 5
 ```
 
-One of the great benefits of Python is that so many people use it and write code for it. There are thousands of libraries made by organizations and by the Python community, that you can download. These libraries contain functions that you can call so that you do not have to implement core pieces of functionality yourself. This can speed your development up significantly!
+One of the great benefits of Python is that so many people use it and write code for it. There are thousands of packages made by organizations and by the Python community that you can download. These libraries contain functions that you can call so that you do not have to implement core pieces of functionality yourself. This can speed your development up significantly!
 
 
 ### A few useful functions
@@ -245,9 +279,8 @@ Below you will find a small list of some handy functions in Python.
 You can declare a list of all numbers from zero to N by saying `range(N)`. This is very useful when executing loops for example:
 
 ```python
-list = [0, 5, 8, 4, 6]
 for index in range(100):
-  # code
+  # code is executed 100 times with index = 0, 1, 2, ..., 99
 ```
 
 ## Exercises
