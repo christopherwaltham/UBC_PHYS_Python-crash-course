@@ -108,4 +108,4 @@ You can now modify the code to do what you want. Can you make the LED be yellow?
 ## The Arduino-Python Library
 The source for the Arduino-Python library can be found [here](https://github.com/thearn/Python-Arduino-Command-API). This repository includes a description of features and the source code that you can have a look at to figure out what other functions you can use with the Arduino board. In the next module, we will use the `pulseIn_set` function to measure the distance to objects using an ultrasonic range finder.
 
-Next section: [Ultrasonic Range Sensing](/3.%20Ultrasonic%20Range%20Sensing/)
+Next: [Module 3: Ultrasonic Range Sensing](/3.%20Ultrasonic%20Range%20Sensing/)

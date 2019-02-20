@@ -86,4 +86,4 @@ Look at time measurements and corresponding distance traveled by sound. Determin
 
 
 
-Next section: [Pendulum Experiment](/4.%20Pendulum%20Experiment/)
+Next: [Module 4: Pendulum Experiment](/4.%20Pendulum%20Experiment/)

@@ -259,4 +259,4 @@ for index in range(100):
 - Write a function to compute the mode (the number that appears the most frequently) in a list of numbers.
 
 
-Next section: [Arduino for Data Collection](/2.%20Arduino%20for%20Data%20Collection/)
+Next: [Module 2: Arduino for Data Collection](/2.%20Arduino%20for%20Data%20Collection/)
