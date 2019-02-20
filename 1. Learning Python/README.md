@@ -1,7 +1,4 @@
 # 1. Learning Python
-
-A great resource for learning Python can be found [here](https://docs.python.org/2/tutorial/index.html).
-
 There are two ways you can execute Python code:
 1. You can type instructions, line by line, into a Python console (such as the one in Spyder).
 2. If you have more lines of code you want to execute, you can type them into a file that you give a `.py` extension.
@@ -9,9 +6,9 @@ There are two ways you can execute Python code:
 ## Using python as a calculator
 The easiest thing you can do is use python as a calculator. We will start by running this code directly from the Spyder Console window.
 
-Launch Spyder through Anacodna. The lower right section of the Spyder window is the Console. Click on the console, and you are ready to type commands.
+Launch Spyder through Anaconda. The lower right section of the Spyder window is the Console. Click on the console, and you are ready to type commands.
 
-You can for example write `2+2` or `2+10-5*10/2` and hit return on your keyboard to make Python compute the result. This is how my screen looks after having executed these commands:
+You can, for example, write `2+2` or `2+10-5*10/2` and hit return on your keyboard to make Python compute the result. This is how my screen looks after having executed these commands:
 
 ![](Images/spyder_console.png)
 
@@ -54,12 +51,12 @@ Similarly, you can check for inequalities by using
 ## Strings
 You can also set variables to be equal to text. For this to work, you need to surround the text with quotation marks:
 ```python
-a = "this is a string"
-b = ' and this is another'
-a+b #  "this is a string and this is another"
+a = "this is a string,"
+b = ' and this is another.'
+a+b #  "this is a string, and this is another."
 ```
 
-You can use both double quotes and single quotes to surround strings, it makes no difference.
+You can use both double quotes and single quotes to surround strings; it makes no difference.
 
 ### Indexing
 To get parts of a string, you can use indexing. Python uses zero indexing, meaning that the first character is located at index zero. See the example for more details on how it works:
@@ -106,7 +103,7 @@ Thus, you can compute the mean of your list by
 mean = sum(numbers) / len(numbers)
 ```
 
-These are just a few things that you can do with numbers and lists. For more information, you can for example search the web for "python lists". You will find lots of great information, such as [this article from Google for Education](https://developers.google.com/edu/python/lists).
+These are just a few things that you can do with numbers and lists. For more information, you can, for example, search the web for "python lists". You will find lots of great information, such as [this article from Google for Education](https://developers.google.com/edu/python/lists).
 
 ## Writing code in a file
 If you want to make more complicated programs with commands that span across multiple lines, it is easier to have the code in a file rather than typing it into the terminal. You can do this as follows:
@@ -122,7 +119,7 @@ Note: to make what you compute show up in the terminal, you must place it inside
 ## Comments
 The Python interpreter will skip anything that comes after `#` on a line. You can use this to write notes about what you are doing in your code, which can be useful for humans to understand what is going on. For example
 ```python
-2**6 # is the python notation for exponentiation, ie. 2^6
+2**6 # is the python notation for exponentiation, i.e. 2^6
 ```
 
 If you want your comment to span multiple lines, you can use a multiline comment:
@@ -179,12 +176,12 @@ if a == 5:
 ```
 
 ## Loops
-If you want to execute the same lines of code many times in a row, loops are very useful.
+If you want to execute the same lines of code many times in a row, loops are handy.
 
 ### `While` loops
 The `while` loop works a bit like the `if` statement, with the one difference that the `while` loop will continue to execute the while block until the condition becomes `False`.
 
-In the following code for example, we print the numbers from 0 to 5.
+In the following code, for example, we print the numbers from 0 to 5.
 
 ```python
 a = 0
@@ -203,9 +200,9 @@ for item in list:
 ```
 
 ## Functions
-In order to make code more readable and easy to reuse, programmers use functions. This a very powerful concept that enables the programmer to do very powerful things by calling a function in one line of code, without needing to know the exact details of how the function works. You have used multiple functions already. `Print()` is a function in Python that prints what you pass to it (what is inside the parenthesis) to the console. `len()` and `sum()` are other functions.
+To make their code more readable and easy to reuse, programmers use functions. This a very powerful concept that enables the programmer to do a lot of computation by calling a function in one line of code, without needing to know the exact details of how the function works. You have used multiple functions already. `Print()` is a function in Python that prints what you pass to it (what is inside the parenthesis) to the console. `len()` and `sum()` are other functions.
 
-There are a few rules to defining Python functions:
+There are a few rules for defining Python functions:
 - Function blocks begin with the keyword `def` followed by the function name, parentheses and a colon.
 - Variables can be passed to the function by placing them inside the parenthesis. They are called function arguments or parameters.
 - The code block within every function is indented.
@@ -237,11 +234,11 @@ def magnitude(x, y):
 print(magnitude(3,4)) # prints 5
 ```
 
-One of the great benefits of Python is that so many people use it and write code for it. There are thousands of libraries made by organizations and by the Python community, that you can download. These libraries contain functions that you can call, so that you do not have to implement core pieces of functionality yourself. This can speed your development up significantly!
+One of the great benefits of Python is that so many people use it and write code for it. There are thousands of libraries made by organizations and by the Python community, that you can download. These libraries contain functions that you can call so that you do not have to implement core pieces of functionality yourself. This can speed your development up significantly!
 
 
 ### A few useful functions
-Below you will find a small list of some very useful functions in Python.
+Below you will find a small list of some handy functions in Python.
 #### `range()`
 You can declare a list of all numbers from zero to N by saying `range(N)`. This is very useful when executing loops for example:
 
@@ -258,5 +255,8 @@ for index in range(100):
 - Print all prime numbers smaller than 100.
 - Write a function to compute the mode (the number that appears the most frequently) in a list of numbers.
 
+## Resources
+- An excellent resource for learning Python can be found [here](https://docs.python.org/2/tutorial/index.html).
+- If you want to do more exercises, you can sign up at a website like [HackerRank](https://www.hackerrank.com) where you have access to hundreds of problems and where you can test your code automatically to see if you have gotten it right.
 
 Next: [Module 2: Arduino for Data Collection](/2.%20Arduino%20for%20Data%20Collection/)
