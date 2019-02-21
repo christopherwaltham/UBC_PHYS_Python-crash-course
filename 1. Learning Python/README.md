@@ -17,11 +17,17 @@ You can, for example, write `2+2` or `2+10-5*10/2` and hit return on your keyboa
 ![](Images/spyder_console.png)
 
 ## Assigning variables
-You can define variables by setting them equal to something:
+You can define variables by using the assignment operator `=`.
 ```python
 a = 1
 b = 2
 a+b # will now be equivalent to saying 1+2
+```
+
+Note that the assignment operator is directional. It works by assigning the value of the right hand side of `=` to the left hand side. Therefore,
+```python
+a = 1 # a now holds the value 1
+1 = a # error, can't assign to literal
 ```
 
 You can update the value a variable contains by setting it equal to something else:
@@ -40,6 +46,10 @@ a == b   # False
 a+a == b # True
 ```
 
+The single equals sign we just saw is an assignment. `a = 2` assigns the value of 2 to a. The double equals sign `==` tests for equality: `a == 2`
+tests whether the value of `a` is equal to 2.
+
+### Inequalities
 Similarly, you can check for inequalities by using
 - `a < b`, a less than b
 - `a > b`, a greater than b
@@ -54,23 +64,24 @@ b = ' and this is another.'
 a+b #  "this is a string, and this is another."
 ```
 
-You can use both double quotes and single quotes to surround strings; it makes no difference.
+You can use either double quotes `"` or single quotes `'` to surround
+a string, as long you end the string with the same one you start it with.
 
 ### Indexing
 To get parts of a string, you can use indexing. Python uses zero indexing, meaning that the first character is located at index zero. See the example for more details on how it works:
 
 ```python
-a = "banana"
-a[0]    # first character of a
-a[1]    # second character
-a[-1]   # last character
-a[1:3]  # the second and third character
-a[1:-1] # all characters except the first and the last
-a[1:]   # all characters except the first
+a = "physics"
+a[0]    # 'p', first character of a
+a[1]    # 'h', second character
+a[-1]   # 's', last character
+a[1:3]  # 'hy', the second and third character
+a[1:-1] # 'hysic', all characters except the first and the last
+a[1:]   # 'hysics', all characters except the first
 ```
 
 ## Lists
-In the same way that you can collect characters in a string, you can collect other types of data (such as numbers) in a list. Lists are very powerful if you need to store large amounts of data.
+In the same way that you can collect characters in a string, you can collect other types of data (such as numbers) in a list.
 
 If you know what values you want to store in your list, you can initialize a new list by surrounding your numbers with square brackets, and separating them by commas:
 
@@ -78,10 +89,10 @@ If you know what values you want to store in your list, you can initialize a new
 numbers = [1, 2, 3, 40, 500]
 ```
 
-As with strings, you can access individual elements in the list by saying
+As with strings, you can access individual elements in the list by using indexes:
 ```python
-numbers[0]   # returns the first element in the list
-numbers[2:4] # returns the third and fourth element in the list as a list
+numbers[4]   # 40, returns the first element in the list
+numbers[2:5] # [2,3,40], returns the third and fourth element in the list as a list
 ```
 
 If you want to add a number to your list, you can use the `append()` method:
@@ -103,8 +114,9 @@ mean # prints the variable to the screen
 # There is a problem here - can you spot it? See the next section on data-types.
 ```
 
-These are just a few things that you can do with numbers and lists. For more information, you can, for example, search the web for "python lists". You will find lots of great information, such as [this article from Google for Education](https://developers.google.com/edu/python/lists).
+These are just a few things that you can do with numbers and lists. For more information, you can, for example, search the web for "python lists". You will find lots of great information, such as [this article from _Google for Education_](https://developers.google.com/edu/python/lists).
 
+There are many other collection types in Python, that do the same essential job as lists, but has more functionality. [Arrays](https://www.pythoncentral.io/the-difference-between-a-list-and-an-array/) are for example better for performing mathemtaical operations.
 
 ## Data-types
 Do you notice something strange when computing the average above? If your mean is not a whole number, Python will return the largest integer value less than the mean. This is because each variable has a type associated with it. The two types of interest here are:
@@ -233,7 +245,7 @@ for item in list:
 ## Functions
 To make their code more readable and easy to reuse, programmers use functions. This a very powerful concept that enables us to do a lot of computation by calling a function in one line of code. It means that we do not need to know the exact details of how the function works.
 
-You have used multiple functions already. `Print()` is a function in Python that prints what you pass to it (what is inside the parenthesis) to the console. `len()` and `sum()` are other functions.
+You have used multiple functions already. `print()` is a function in Python that prints what you pass to it (what is inside the parenthesis) to the console. `len()` and `sum()` are other functions.
 
 There are a few rules for defining Python functions:
 - Function blocks begin with the keyword `def` followed by the function name, parentheses and a colon.

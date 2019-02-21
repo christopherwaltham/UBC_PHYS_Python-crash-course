@@ -26,8 +26,7 @@ Different projects might need to use different versions of Python. We will, ther
 You have now made your own environment. It may appear below your "base (root)" environment which is the global environment on your computer. Other applications may be using this global environment, so if we install packages here, they may interfere. By keeping a separate virtual environment, you are in control.
 
 ## Installing packages
-Python is a very powerful and versatile tool, making people use Python for very different things. The functionality of Python has therefore been divided into _packages_ (libraries of functionality) that we can download and access to make our work easier.
-
+The functionality of programming languages is often separated into libraries. In Python, a these libraries are called _packages_ that we can download and access to make our work easier.
 
 ### Using the Conda package manager
 The package manager in Anaconda is called Conda. We can now install the packages we need in our newly made environment using Conda. Do as follows:
