@@ -1,5 +1,5 @@
 # Finding USB Port Name for Arduino
-Every time you connect the Arduino to your computer, it will be assigned a port name so that you and software can refference it. This name may change every time you connect the device.
+Every time you connect the Arduino to your computer, it will be assigned a port name so that you and software can reference it. This name may change every time you connect the device.
 
 ## Windows
 - Open _Device Manager_
