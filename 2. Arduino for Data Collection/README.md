@@ -168,9 +168,14 @@ TODO: include a video link
 - Select `Measure` and activate `Duty` (duty cycle), `Width`, `Period` and `Frequency`.
 ![](Images/scope_measure.png)
 
-#### Questions
-- Are these measurements what you expect them to be?
-- Does the duty cycle correspond with what you set it to?
+- Try changing the duty cycle in code, and see how the shape on your oscilloscope changes.
+
+#### Question
+Are these measurements what you expect them to be? Does the duty cycle correspond with what you set it to?
+
+Note:
+- The clock frequency of the ATMega328P is 16 MHz, and that it uses 8-bit resolution for its PWM outputs. That is, the microprocessor counts to 2^8 = 256 once for every rising edge it generates.
+- Your argument to the analogWrite function dictates how many of the 256 clock cycles the pin should be held in the ON state.
 
 #### Transients
 - Zoom in on one of the rising edges by adjusting the time scale.
