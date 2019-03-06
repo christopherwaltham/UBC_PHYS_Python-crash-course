@@ -10,8 +10,8 @@ Created on Fri Feb 22 21:30:16 2019
 from Arduino import Arduino
 import time
 
-portName = 'COM3'                      # example of Windows port name
-#portName = '/dev/tty.usbserial-1410'  # exmaple of Mac port name
+#portName = 'COM3'                      # example of Windows port name
+portName = '/dev/tty.usbserial-1430'  # exmaple of Mac port name
 
 board = Arduino('9600', port=portName) # find and connect microcontroller
 print('Connected')                     # confirms the microcontroller has been found

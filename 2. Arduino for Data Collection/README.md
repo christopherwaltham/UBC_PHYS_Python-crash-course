@@ -1,4 +1,10 @@
 # 2. Arduino for Data Collection
+
+## Introduction
+Now, we are ready to start working with microprocessors. For this course, we will use the [Arduino Nano](https://store.arduino.cc/usa/arduino-nano) which is a small board based on the [ATmega328P](https://www.microchip.com/wwwproducts/en/ATmega328p) microcontroller.
+
+To directly program the Arduino Nano, you will have to use C++. Learning two programming languages at once is not easy. What we have done instead, is upload code to the boards so that you can control it by sending commands from your computer through UART (see definition above). In Python, you will write code that runs on your computer, and that will send messages to the Arduino to control it. We will use the Arduino-Python library to achieve this.
+
 ## Terms
 The following list gives a brief explanation of each of the main concepts, with a link you can follow to find more information.
 
@@ -12,23 +18,24 @@ The following list gives a brief explanation of each of the main concepts, with 
 - RGB LED is a device where both a red, green and blue LED has been placed in one package.
 - [Breadboard](https://en.wikipedia.org/wiki/Breadboard) is a tool for prototyping electronic circuits that allows the user to establish reliable temporary connections between components.
 - [DMM](https://www.fluke.com/en-ca/learn/best-practices/measurement-basics/electricity/what-is-a-digital-multimeter) (digital multimeter) is a tool used to measure two or more electrical quantities, such as voltage, current, and resistance.
+- [Oscilloscope](https://learn.sparkfun.com/tutorials/how-to-use-an-oscilloscope/introduction) is a tool that can sample voltage readings very rapidly, and plot a graph of how voltage varies with time. This enables you to investigate periodic behavior in voltage as well as capturing transient events.
 - [Digital signals](https://en.wikipedia.org/wiki/Digital_signal) are signals where information is communicated in discrete values (such as LOW and HIGH).
 - [Analog signals](https://en.wikipedia.org/wiki/Analog_signal) are signals where information is communicated using a continuous range of values.
 - [PWM](https://www.arduino.cc/en/tutorial/PWM) (Pulse Width Modulation) is a technique where a digital signal is rapidly turned on and off to produce what amounts to an analog signal.
 
-## Introduction
-Now, we are ready to start working with microprocessors. For this course, we will use the [Arduino Nano](https://store.arduino.cc/usa/arduino-nano) which is a small board based on the [ATmega328P](https://www.microchip.com/wwwproducts/en/ATmega328p) microcontroller.
+## DMM and Oscilloscope
+When we start to working with hardware, it is important that we have the tools to visualize what is happening. This will enable us to understnad what is going on at all steps, and it will give us the ability to debug the system systematically if something is not working as we expect it to.
 
-To directly program the Arduino Nano, you will have to use C++. Learning two programming languages at once is not easy. What we have done instead, is upload code to the boards so that you can control it by sending commands from your computer through UART (see definition above). In Python, you will write code that runs on your computer, and that will send messages to the Arduino to control it. We will use the Arduino-Python library to achieve this.
+- The DMM (digital multimeter) is a great tool for measuring any parameter that does not change with time, such as resistance and current and voltage at DC (direct current).
+- The oscilloscope is designed for measuring voltages that vary over time. This enables you to observe voltages at AC (alternating current). The oscilloscope also makes it possible to capture what is commonly reffered to as transient behaviour - that is, events that happen for a limited period of time as an external trigger moves a system form one equilibrium position to another.
 
+Ask the instructor or TAs if you are not familiar with the use of these tools.
+
+## Theory
 ### Breadboard
 A breadboard is a handy tool for prototyping. It allows us to connect components into circuits reliably without the need to solder. The internals of a breadboard is connected as shown in the image below. It is usual to use the horizontal traces on the side of the board as power (red) and ground (blue).
 
 Note: For large breadboards, the power and ground rails may be split in the middle.
-
-To verify how the breadboard is connected, use a multimeter to probe the pins. Some questions to consider:
-- Which setting on the multimeter should you use to determine which pins are connected and which are not?
-- How do you reliably obtain contact with the metal under the plastic cover of the breadboard with the thick multimeter probes?
 
 ![](Images/breadboard.png)
 
@@ -64,20 +71,28 @@ The amount of time spent in the HIGH state vs. the LOW state is characterized by
 
 Note that this is not a true analog voltage. For motors, diodes and other devices, it is ok to use PWM to achieve an analog voltage. It is not possible to use this trick for many other applications, such as powering digital circuits.
 
-## Task 1: Controlling an LED
+## Task 1: Getting Familiar with the Breadboard
+To verify how the breadboard is connected, use a multimeter to probe the pins.
+
+Some questions to consider:
+- Which setting on the multimeter should you use to determine which pins are connected and which are not?
+- How do you reliably obtain contact with the metal under the plastic cover of the breadboard with the thick multimeter probes?
+
+Draw a picture of the breaboard and its internal connections in your lab notebook.
+
+## Task 2: Controlling an LED
 
 ### Circuit
-We are ready to connect our first circuit. Place a 100 to 500 ohm resistor in series with the LED. The resistor limits the current moving through the LED so that it does not overheat and get damaged.
+We are ready to connect our first circuit.
+- Place a 100 to 500 ohm resistor in series with the LED. The resistor limits the current moving through the LED so that it does not overheat and get damaged.
+- Make sure to connect the cathode of the diode to ground. The cathode is the side with the shortest leg and with a small flat notch on the diode housing.
+- Notice that we are connecting the LED to pin D5. This will be important in the next step when we want to control this pin.
 
-Make sure to connect the cathode of the diode to ground. The cathode is the side with the shortest leg and with a small flat notch on the diode housing.
-
-Notice that we are connecting the LED to pin D5. This will be important in the next step when we want to control this pin.
-
-After you are sure you have connected everything correctly, you can connect the Arduino Nano to your computer using the USB cable. You will see a red status LED on the Arduino board turns on to indicate the Arduino is powered on and ready to execute your commands.
+After you are sure you have connected everything correctly, you can connect the Arduino Nano to your computer using the USB cable. You will see a red status LED on the Arduino board turn on to indicate the Arduino is powered on and ready to execute your commands.
 
 ![](Images/led_breadboard.png)
 
-## Programming
+### Programming
 Now, you can control the Arduino by typing the following lines of code into a new file in Spyder. The program will establish a connection with the Arduino over UART and set the external LED to be on.
 
 You need to update the variable `portName` to correspond to the name of the port on your computer that the Arduino is connected to. You can find the port by following [these instructions](Finding_USB_Port_Name.md).
@@ -98,6 +113,7 @@ board.digitalWrite(5, 'HIGH')          # make LED light up
 #board.digitalWrite(5, 'LOW')          # uncomment this line to turn LED off
 ```
 
+#### Flashing LED
 You can now expand your program to do something more interesting. What about have the LED flash on and off continuously? To achieve this, add the following to the code you just wrote:
 
 ```python
@@ -114,13 +130,66 @@ while True:
 This is what is called an infinate loop - a loop that will never stop executing. To terminate the program, you have to click the red square stop button located in the top right corner of the Spyder Console.
 
 
-### Dimming the LED
+#### Controlling LED brightness
+Imagine if the above code was executed with a very small delay between each the LED was turned on and off. It is going to appear as though the LED is half as bright, as it only turned on half the time. By altering the ratio of time the LED is on to how long it is off, we can further control the brightness of the LED.
 
-### Visualizing AnalogWrite usig Oscilloscope
+The function `analogWrite` continouly turns the output on and off, with a duty cycle spesified by the second argument to the function. D = 255 corresponds to a duty cycle of 100% (fully on), and D = 0 corresponds to a duty cycle of 0% (fully off).
+
+Alter your code to use the analog print function. It could look something like this.
+
+```python
+# import libraries
+from Arduino import Arduino
+
+portName = 'COM3'                      # example of Windows port name
+
+board = Arduino('9600', port=portName) # find and connect microcontroller
+print('Connected')                     # confirms the microcontroller has been found
+
+board.pinMode(5, 'OUTPUT')             # configure pin D5 to be an output pin
+
+board.analogWrite(5, 200)              # set LED to half brightness
+```
 
 
 
-## Task 2: Controlling an RGB LED
+### Visualizing PWM using Oscilloscope
+Now, use the oscilloscope to see how the voltage to the LED changes with time. Connect the oscilloscope ground probe to the ground rail on the readboard, and connect the signal probe to the digital output pin D5 on the Arduino that we are using to drive the LED.
+![](Images/scope_connection.jpg)
+
+If you would like a refresher on how to use these tablet scopes, you can take a look at this video:
+TODO: include video link
+
+- Turn off the second channel CH2 on the cope, as we are not using it.
+- Adjust the scope time scale and voltage level for CH1 so that you see a the PWM wave as shown in this picture.
+![](Images/scope_base.png)
+
+- Drag down from the top of the screen to show the menu.
+- Select `Measure` and activate `Duty` (duty cycle), `Width`, `Period` and `Frequency`.
+![](Images/scope_measure.png)
+
+#### Questions
+- Are these mesurnments what you expect them to be?
+- Does the duty cycle correspond with what you set it to?
+
+#### Transients
+- Zoom in on one of the rising edges by adjusting the time scale.
+- The oscilatory behaviour is surprising!
+![](Images/scope_zoom.png)
+
+- Use the cursors to measure the amplitude of the oscilations
+![](Images/scope_cursor.png)
+
+- Bring down the menu again, go to the `Trigger` section and trigger on a falling edge.
+
+![](Images/scope_falling_edge.png)
+
+#### Questions
+- What does this tell you about the system? Why is the wave overshooting?
+
+Hint: it might be partially associated with how the mesurnment is being done.
+
+## Task 3: Controlling an RGB LED
 We are now ready to look at an RGB LED. This is a device that contains a red, green and blue LED in one package. Controlling the relative brightness of the different color-channels will enable us to display just about any color, making this a very cool device to play with.
 
 To be able to set the brightness of each pin, we will have to use the PWM enabled pins of the Arduino Nano. You can use pins D3, D5, and D6 as shown in the circuit below.
