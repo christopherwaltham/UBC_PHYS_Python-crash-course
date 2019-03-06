@@ -52,12 +52,12 @@ The Arduino Nano has many pins that each can be configured to perform some funct
 - `A` followed by a number (such as A2) are analog pins. In addition to being used as digital pins, they are capable of reading any voltage between 0V and 5V.
 - The PWM capable pins of the ATMega328P are the digital pins 3, 5, 6, 9, 10, and 11. These are the only pins where you can use `analogWrite()`.
 
-### AnaligWrite
+### AnalogWrite
 Because the Arduino is a digital device, it does not know how to produce analog voltages. That is, voltages other than 0V and 5V. To produce an intermediate voltage, we can, however, use a trick called PWM (pulse width modulation). By turning the pin to HIGH and LOW very rapidly and varying the amount of time spent in the HIGH state relative to the time spent in the LOW state, it is possible to manipulate the average voltage so that it becomes what we want. If we want to produce 2.5V for example, we just have to spend as much time in the HIGH state as in the LOW state.
 
 The amount of time spent in the HIGH state vs. the LOW state is characterized by a parameter called the duty cycle `D`, given by
 <div style="text-align:center">
-<img src ="Images/D_eq.png" />
+<img src ="Images/D_eq.png"/>
 </div>
 
 ![](Images/PWM.png)
@@ -111,6 +111,15 @@ while True:
     time.sleep(1)                  # wait 1 second
 ```
 
+This is what is called an infinate loop - a loop that will never stop executing. To terminate the program, you have to click the red square stop button located in the top right corner of the Spyder Console.
+
+
+### Dimming the LED
+
+### Visualizing AnalogWrite usig Oscilloscope
+
+
+
 ## Task 2: Controlling an RGB LED
 We are now ready to look at an RGB LED. This is a device that contains a red, green and blue LED in one package. Controlling the relative brightness of the different color-channels will enable us to display just about any color, making this a very cool device to play with.
 
@@ -138,7 +147,7 @@ RED   = 3
 GREEN = 5
 BLUE  = 6
 
-# configure A0, A1 and A2 as output pins
+# configure the pins as outputs
 board.pinMode(RED, "OUTPUT")
 board.pinMode(GREEN, "OUTPUT")
 board.pinMode(BLUE, "OUTPUT")
@@ -169,10 +178,12 @@ except KeyboardInterrupt:
     pass
 ```
 
-You can now modify the code to do what you want.
+The `try: except` block is part of Python's error handeling functionality. Placing your loop inside this statement enables you to use the shortcut `ctrl` + `c` to terminate the program (the console must be active for this to work). This shortcut is very commonly used to terminate program execution.
+
+### Exersises
+You can now modify the code.
 - Can you make the LED be yellow?
 - What about making the color of the LED change gradually?
-
 
 ### The Arduino-Python Library
 The source for the Arduino-Python library can be found [here](https://github.com/thearn/Python-Arduino-Command-API). This repository includes a description of features and the source code that you can have a look at to figure out what other functions you can use with the Arduino board. In the next module, we will use the `pulseIn_set` function to measure the distance to objects using an ultrasonic range finder.
