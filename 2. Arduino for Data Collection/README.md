@@ -24,10 +24,10 @@ The following list gives a brief explanation of each of the main concepts, with 
 - [PWM](https://www.arduino.cc/en/tutorial/PWM) (Pulse Width Modulation) is a technique where a digital signal is rapidly turned on and off to produce what amounts to an analog signal.
 
 ## DMM and Oscilloscope
-When we start to working with hardware, it is important that we have the tools to visualize what is happening. This will enable us to understnad what is going on at all steps, and it will give us the ability to debug the system systematically if something is not working as we expect it to.
+When we start to work with hardware, it is important that we have the tools to visualize what is happening. This will enable us to understand what is going on at all steps, and it will give us the ability to debug the system systematically if something is not working as we expect it to.
 
 - The DMM (digital multimeter) is a great tool for measuring any parameter that does not change with time, such as resistance and current and voltage at DC (direct current).
-- The oscilloscope is designed for measuring voltages that vary over time. This enables you to observe voltages at AC (alternating current). The oscilloscope also makes it possible to capture what is commonly reffered to as transient behaviour - that is, events that happen for a limited period of time as an external trigger moves a system form one equilibrium position to another.
+- The oscilloscope is designed for measuring voltages that vary over time. This enables you to observe voltages at AC (alternating current). The oscilloscope also makes it possible to capture what is commonly referred to as transient behavior - that is, events that happen for a limited period of time as an external trigger moves a system form one equilibrium position to another.
 
 Ask the instructor or TAs if you are not familiar with the use of these tools.
 
@@ -78,7 +78,7 @@ Some questions to consider:
 - Which setting on the multimeter should you use to determine which pins are connected and which are not?
 - How do you reliably obtain contact with the metal under the plastic cover of the breadboard with the thick multimeter probes?
 
-Draw a picture of the breaboard and its internal connections in your lab notebook.
+Draw a picture of the breadboard and its internal connections in your lab notebook.
 
 ## Task 2: Controlling an LED
 
@@ -127,13 +127,13 @@ while True:
     time.sleep(1)                  # wait 1 second
 ```
 
-This is what is called an infinate loop - a loop that will never stop executing. To terminate the program, you have to click the red square stop button located in the top right corner of the Spyder Console.
+This is what is called an infinite loop - a loop that will never stop executing. To terminate the program, you have to click the red square stop button located in the top right corner of the Spyder Console.
 
 
 #### Controlling LED brightness
 Imagine if the above code was executed with a very small delay between each the LED was turned on and off. It is going to appear as though the LED is half as bright, as it only turned on half the time. By altering the ratio of time the LED is on to how long it is off, we can further control the brightness of the LED.
 
-The function `analogWrite` continouly turns the output on and off, with a duty cycle spesified by the second argument to the function. D = 255 corresponds to a duty cycle of 100% (fully on), and D = 0 corresponds to a duty cycle of 0% (fully off).
+The function `analogWrite` continuously turns the output on and off, with a duty cycle specified by the second argument to the function. D = 255 corresponds to a duty cycle of 100% (fully on), and D = 0 corresponds to a duty cycle of 0% (fully off).
 
 Alter your code to use the analog print function. It could look something like this.
 
@@ -154,14 +154,14 @@ board.analogWrite(5, 200)              # set LED to half brightness
 
 
 ### Visualizing PWM using Oscilloscope
-Now, use the oscilloscope to see how the voltage to the LED changes with time. Connect the oscilloscope ground probe to the ground rail on the readboard, and connect the signal probe to the digital output pin D5 on the Arduino that we are using to drive the LED.
+Now, use the oscilloscope to see how the voltage to the LED changes with time. Connect the oscilloscope ground probe to the ground rail on the breadboard, and connect the signal probe to the digital output pin D5 on the Arduino that we are using to drive the LED.
 ![](Images/scope_connection.jpg)
 
 If you would like a refresher on how to use these tablet scopes, you can take a look at this video:
-TODO: include video link
+TODO: include a video link
 
 - Turn off the second channel CH2 on the cope, as we are not using it.
-- Adjust the scope time scale and voltage level for CH1 so that you see a the PWM wave as shown in this picture.
+- Adjust the scope time scale and voltage level for CH1 so that you see a PWM wave as shown in this picture.
 ![](Images/scope_base.png)
 
 - Drag down from the top of the screen to show the menu.
@@ -169,15 +169,15 @@ TODO: include video link
 ![](Images/scope_measure.png)
 
 #### Questions
-- Are these mesurnments what you expect them to be?
+- Are these measurements what you expect them to be?
 - Does the duty cycle correspond with what you set it to?
 
 #### Transients
 - Zoom in on one of the rising edges by adjusting the time scale.
-- The oscilatory behaviour is surprising!
+- The oscillatory behavior is surprising!
 ![](Images/scope_zoom.png)
 
-- Use the cursors to measure the amplitude of the oscilations
+- Use the cursors to measure the amplitude of the oscillations
 ![](Images/scope_cursor.png)
 
 - Bring down the menu again, go to the `Trigger` section and trigger on a falling edge.
@@ -187,7 +187,7 @@ TODO: include video link
 #### Questions
 - What does this tell you about the system? Why is the wave overshooting?
 
-Hint: it might be partially associated with how the mesurnment is being done.
+Hint: it might be partially associated with how the measurement is being done.
 
 ## Task 3: Controlling an RGB LED
 We are now ready to look at an RGB LED. This is a device that contains a red, green and blue LED in one package. Controlling the relative brightness of the different color-channels will enable us to display just about any color, making this a very cool device to play with.
@@ -211,7 +211,7 @@ portName = 'COM3'                      # example of Windows port name
 board = Arduino('9600', port=portName) # find and connect microcontroller
 print('Connected')                     # confirms the microcontroller has been found
 
-# give pins names so they are easy to reference
+# give pins names, so they are easy to reference
 RED   = 3
 GREEN = 5
 BLUE  = 6
@@ -247,9 +247,9 @@ except KeyboardInterrupt:
     pass
 ```
 
-The `try: except` block is part of Python's error handeling functionality. Placing your loop inside this statement enables you to use the shortcut `ctrl` + `c` to terminate the program (the console must be active for this to work). This shortcut is very commonly used to terminate program execution.
+The `try: except` block is part of Python's error handling functionality. Placing your loop inside this statement enables you to use the shortcut `ctrl` + `c` to terminate the program (the console must be active for this to work). This shortcut is very commonly used to terminate program execution.
 
-### Exersises
+### Exercises
 You can now modify the code.
 - Can you make the LED be yellow?
 - What about making the color of the LED change gradually?
