@@ -103,7 +103,7 @@ There will be a significant delay between each pulse-train, as we are using the 
 Hint: how different is the constant of proportionality you get from [this](https://www.google.com/search?client=safari&rls=en&q=the+speed+of+sound+in+air&ie=UTF-8&oe=UTF-8)?
 
 ### Writing to file
-You can use the `csv` library to write data to a file. This can be very useful for data analysis later.
+You can use the `csv` library to write data to a file. This can be very useful for data analysis and will be used in the next module where you use the ultrasonic range finder for conducting an experiment.
 
 ```python
 from Arduino import Arduino
@@ -117,19 +117,22 @@ PORT_NAME = 'COM3' # MUST BE UPDATED TO USE THE CORRECT PORT
 board = Arduino('9600', port='PORT_NAME')
 print('Connected')
 
-while True:
-    pulseTime = board.pulseIn_set(13, 'HIGH')
-    print(pulseTime)
+try:
+    while True:
+        pulseTime = board.pulseIn_set(13, 'HIGH')
+        print(pulseTime)
 
-    # open a csv file and write time and pulseTime to it
-    with open("test_data.csv","a") as f:
-        writer = csv.writer(f,delimiter=",")
-        writer.writerow([time.time(), pulseTime])
+        # open a csv file and write time and pulseTime to it
+        with open("test_data.csv","a") as f:
+            writer = csv.writer(f,delimiter=",")
+            writer.writerow([time.time(), pulseTime])
 
-    time.sleep(0.2) # wait 0.2 seconds
+        time.sleep(0.2) # wait 0.2 seconds
+
+# press ctrl+c while the console is active to terminate the program
+except KeyboardInterrupt:
+    pass
 ```
-
-We will use that code as a starting point for the next module.
 
 ### Extra Exercise: Handling Exceptions
 If an obstacle is placed to close to the ultrasonic sensor, or if the obstruction too far away, the number returned may be off. Can you write some lines of code to output zero if the distance-measurement seems suspicious?
