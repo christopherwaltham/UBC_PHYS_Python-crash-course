@@ -31,24 +31,27 @@ import time
 # NEW, import csv library
 import csv
 
-PORT_NAME = 'COM3' # MUST BE UPDATED TO USE THE CORRECT PORT
+PORT_NAME = 'COM3'              # MUST BE UPDATED TO USE THE CORRECT PORT
+FILE_NAME = 'pendulum_data.csv' # Name of file that data will be written to
 
 board = Arduino('9600', port='PORT_NAME')
 print('Connected')
 
-counter = 0
+f = open('test_data.csv','a')        # open a file for 'a'ppending
+writer = csv.writer(f,delimiter=',') # prepare for writing to file
+
+counter = 0 # to count how many data-points we have collected
 
 try:
     while True:
+        counter = counter + 1 # increment counter
 
         # make distance measurement
         pulseTime = board.pulseIn_set(13, 'HIGH')
         distance = pulseTime * 0.034 / 2;
 
-        # open a csv file and write counter, time and pulseTime to it
-        with open("test_data.csv","a") as f:
-            writer = csv.writer(f,delimiter=",")
-            writer.writerow([counter, time.time(), distance])
+        # write list of data to file
+        writer.writerow([counter, time.time(), distance])
 
         # print to console every 10 itterations. % is modulo operator
         if counter % 10 == 0:
@@ -58,7 +61,7 @@ try:
 
 # press ctrl+c while the console is active to terminate the program
 except KeyboardInterrupt:
-    pass
+    f.close() # close file gracefully when program is terminated
 ```
 
 ## Procedure
@@ -69,8 +72,6 @@ except KeyboardInterrupt:
 
 
 ## Data Analysis
-Introduction to Matplotlib and Jupyter notebooks.
+For analyzing the data, we can continue using Spyder to write and run code. Another tool designed explicitly for this type of work is known as `Jupyter Notebook`. You can install and launch Jupyter from the Anaconda Navigator in the same way you have been using Spyder. The following instructions have been written using a Jupyter notebook that you can open and copy code from, or that you can download and use as a starting point for your work.
 
-
-
-Next: [Module 5: Oscilloscope](/5.%20Oscilloscope/)
+[Jupyter Notebook with data analysis.](Data_Analysis.ipynb)
