@@ -67,11 +67,6 @@ The amount of time spent in the HIGH state vs. the LOW state is characterized by
 <img src ="Images/D_eq.png"/>
 </div>
 
-```math
-D=\frac{t}{T}
-```
-
-
 ![](Images/PWM.png)
 
 Note that this is not a true analog voltage. For motors, diodes and other devices, it is ok to use PWM to achieve an analog voltage. It is not possible to use this trick for many other applications, such as powering digital circuits.
