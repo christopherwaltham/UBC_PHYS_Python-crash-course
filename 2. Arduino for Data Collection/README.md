@@ -37,10 +37,10 @@ You need to update the variable `portName` to correspond to the name of the port
 # import libraries
 from Arduino import Arduino
 
-portName = 'COM3'                      # example of Windows port name
+PORT_NAME = 'COM3'                     # example of Windows port name
 #portName = '/dev/tty.usbserial-1410'  # exmaple of Mac port name
 
-board = Arduino('9600', port=portName) # find and connect microcontroller
+board = Arduino('9600', port=PORT_NAME) # find and connect microcontroller
 print('Connected')                     # confirms the microcontroller has been found
 
 board.pinMode(5, 'OUTPUT')             # configure pin D5 to be an output pin
@@ -131,10 +131,10 @@ The following code will continuously flash the three primary colors for 1 second
 from Arduino import Arduino
 import time
 
-portName = 'COM3'                      # example of Windows port name
+PORT_NAME = 'COM3'                      # example of Windows port name
 #portName = '/dev/tty.usbserial-1410'  # exmaple of Mac port name
 
-board = Arduino('9600', port=portName) # find and connect microcontroller
+board = Arduino('9600', port=PORT_NAME) # find and connect microcontroller
 print('Connected')                     # confirms the microcontroller has been found
 
 # give pins names, so they are easy to reference
