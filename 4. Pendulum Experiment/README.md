@@ -27,12 +27,10 @@ Used the code you developed during the last module to measure the distance and p
 ```python
 from Arduino import Arduino
 import time
-
-# NEW, import csv library
 import csv
 
 PORT_NAME = '/dev/tty.usbserial-1420' # MUST BE UPDATED TO USE THE CORRECT PORT
-FILE_NAME = 'pendulum_data_MK.csv'    # name of file that data will be written to
+FILE_NAME = 'pendulum_data.csv'       # name of file that data will be written to
 PIN_SENSE = 12                        # pin where ultrasic sensor is connected
 
 # connect to Arduino
