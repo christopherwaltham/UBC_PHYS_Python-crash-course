@@ -2,9 +2,9 @@
 # Lab Skills Workshop
 Welcome to this workshop aimed at developing practical experience with data-collection and instrumentation!
 
-This workshop is aimed primarily (but not solely) at students who will be going into 2nd-year physics in September and who feel that they lack confidence in their laboratory and computing skills. The workshop is intended to be a not-for-credit primer for such courses as Phys210 (Computational Physics) and Phys219 (Experimental Physics).
+This workshop is targeted at students who will be going into 2nd-year physics in September and who feel that they lack confidence in their laboratory and computing skills. The workshop is intended to be a not-for-credit primer for such courses as Phys210 (Computational Physics) and Phys219 (Experimental Physics).
 
-The training is divided into modules. Start with [module zero](/0.%20Setting%20up%20the%20Tools/) to get the programs you need installed and running. The rest of the modules follows in chronological order, each building on the progress of the last.
+The training is divided into modules. Start with module zero to get the programs you need installed and running. The rest of the modules follow in chronological order, each building on the progress of the last.
 
 ## Modules
 0. [Setting up the Tools](/0.%20Setting%20up%20the%20Tools/)

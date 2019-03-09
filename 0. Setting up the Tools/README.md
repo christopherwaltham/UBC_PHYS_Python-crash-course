@@ -6,14 +6,14 @@ Anaconda is a package manager (a program that helps you install all the things y
 
 - Download the _Python 3.7 version_ installer suitable for your operating system from https://www.anaconda.com/download/
   - If you are using a Windows computer, you will need to know if your computer is built on a 32-bit or 64-bit architecture. You can find this by following the instructions in [this](https://www.howtogeek.com/howto/21726/how-do-i-know-if-im-running-32-bit-or-64-bit-windows-answers/) link.
-  - If you are using a Mac made any time after 2007 you will have a 64-bit architecture. If your computer is older, see [this](https://www.macobserver.com/tips/how-to/mac-32-bit-64-bit/) guide.
+  - If you are using a Mac made after 2007 you will have a 64-bit architecture. If your computer is older, see [this](https://www.macobserver.com/tips/how-to/mac-32-bit-64-bit/) guide.
 - Run the installer.
 - You will get a prompt to install Visual Studio Code. We do not need this text editor for this course, so you do not need to download it.
 
 ## Setting up a virtual environment
-Different projects might need to use different versions of Python. We will, therefore, set up "virtual environments" every time we want to run Python code. This will also enable us to access the packages we want and ensure they do not conflict.
-- Launch Anaconda Navigator
-  - you will find Anaconda in Launchpad on Mac or your start menu on Windows.
+Different projects might need to use different versions of Python. We will, therefore, set up a "virtual environment" that we can use for executing Python code. This will also enable us to access the packages we want and ensure they do not conflict.
+- Launch `Anaconda-Navigator`
+  - you will find the Anaconda-Navigator in launchpad in macOS and in the start menu in Windows.
 - Go to the _Environments_ tab on the left-hand side of the screen.
 - Click the _Create_ button at the bottom of the screen.
 - The dialogue seen in this figure will appear:
@@ -23,26 +23,26 @@ Different projects might need to use different versions of Python. We will, ther
   - Ensure R is unchecked. R is an entirely separate programming language focussed on statistics applications.
   - Select _Create_.
 
-You have now made your own environment. It may appear below your "base (root)" environment which is the global environment on your computer. Other applications may be using this global environment, so if we install packages here, they may interfere. By keeping a separate virtual environment, you are in control.
+You have now made your own environment. It may appear below your "base (root)" environment which is the global environment on your computer. Other applications may be using this global environment, so if we install packages here, they may interfere. By keeping a separate virtual environment, you ensure this does not happen.
 
 ## Installing packages
-The functionality of programming languages is often separated into libraries. In Python, a these libraries are called _packages_ that we can download and access to make our work easier.
+The functionality of programming languages is often separated into libraries. In Python, these libraries are called _packages_ that we can download and access to make our work easier.
 
 ### Using the Conda package manager
 The package manager in Anaconda is called Conda. We can now install the packages we need in our newly made environment using Conda. Do as follows:
 - Ensure the environment we just created is active.
-  - It should be highlighted in our _environemnts_ inspector as seen in the picture below.
+  - It should be highlighted in the _Environemnts_ inspector as seen in the picture below.
   - If it is not active, click on the environment to activate it. Changing environments can take some seconds, so be patient.
 
 ![](Images/Anaconda2.png)
 
 - Select _Not installed_ from the dropdown to show all the packages Anaconda knows about that are not installed in your environment already.
-- Search for "numpy". When it appears, select the checkbox for the package and hit _Apply_. "Numpy" has some dependencies, that Conda will detect.
+- Search for `numpy`. When it appears, select the checkbox for the package and hit _Apply_. "Numpy" has some dependencies, that Conda will detect.
 
 ![](Images/Anaconda3.png)
 
 - Select _Apply_ in the dialogue that appears to confirm installation of the dependencies, and wait until the package is installed.
-
+- Repeat this process to instsall `matplotlib`, `numpy` and `scipy`.
 
 ### Using the _pip_ package manager
 We are going to use a package called "Arduino-Python" a lot as we progress in the course. This package is not available through the package manager in Anaconda. To install it, we need to use another package manager called _pip_. It works well together with Conda.
