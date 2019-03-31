@@ -37,7 +37,7 @@ The package manager in Anaconda is called Conda. We can now install the packages
 ![](Images/Anaconda2.png)
 
 - Select _Not installed_ from the dropdown to show all the packages Anaconda knows about that are not installed in your environment already.
-- Search for `numpy`. When it appears, select the checkbox for the package and hit _Apply_. "Numpy" has some dependencies, that Conda will detect.
+- Search for `pyserial`. When it appears, select the checkbox for the package and hit _Apply_.
 
 ![](Images/Anaconda3.png)
 
