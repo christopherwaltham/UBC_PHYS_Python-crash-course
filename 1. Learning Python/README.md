@@ -91,8 +91,8 @@ numbers = [1, 2, 3, 40, 500]
 
 As with strings, you can access individual elements in the list by using indexes:
 ```python
-numbers[4]   # 40, returns the first element in the list
-numbers[2:5] # [2,3,40], returns the third and fourth element in the list as a list
+numbers[4]   # 500, returns the fifth element in the list
+numbers[2:5] # [3,40,500], returns the third, fourth and fifth element in the list as a list
 ```
 
 If you want to add a number to your list, you can use the `append()` method:
@@ -177,36 +177,22 @@ As you have noticed, the Spyder editor already populated your python file with a
 
 
 ## `If` statements
-It is possible to have parts of code execute only when you want it to. It works like this:
-
-```python
-a = 5
-
-if False:
-    a = 2
-
-print(a) # will print 5, as the if block has not been executed
-
-if True:
-    a = 2
-
-print(a) # will print 2, as the if block has been executed
-```
+It is possible to have parts of code execute only when you want it to.
 
 The expression you place after `if` is evaluated by the Python interpreter to determine if it is `True` or `False`. If you go back to the section on equality, you will find that these are very useful in conjunction with `if` statements! You can for example say
 
 ```python
 a = 5
 
-if a == 5: # evaluates to True, as a is set to 5
+if a == 5: # evaluates to True, as 'a' is set to 5
     a = 2  # this assignment is therefore executed
 
-print(a)   # the value of a has changed to 2
+print(a)   # the value of 'a' has changed to 2
 
 if a == 5: # evaluates to False
     a = 3  # not executed
 
-print(a)   # a is still 2
+print(a)   # 'a' is still 2
 ```
 
 Python is a special language in that how you indent your lines (how many spaces you have before the first character on a line) matters. Therefore, the code below will print the value of _a_ only if the `if` block is executed.
@@ -300,7 +286,7 @@ for index in range(100):
 - Declare `string = "UBC Physics and Astronomy"`. Make a program that counts the number of 's' characters in this string.
 - Make a function that takes one string as an argument, and returns the number of 's' characters in it. Can you make the character to search for be a parameter as well?
 - Print all prime numbers smaller than 100.
-- Write a function to compute the mode (the number that appears the most frequently) in a list of numbers.
+- Write a function to compute the mode (the number that appears the most frequently) in a list of numbers. 
 
 ## Resources
 - An excellent resource for learning Python can be found [here](https://docs.python.org/2/tutorial/index.html).
