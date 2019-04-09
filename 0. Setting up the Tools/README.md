@@ -8,18 +8,18 @@ Anaconda is a package manager (a program that helps you install all the things y
   - If you are using a Windows computer, you will need to know if your computer is built on a 32-bit or 64-bit architecture. You can find this by following the instructions in [this](https://www.howtogeek.com/howto/21726/how-do-i-know-if-im-running-32-bit-or-64-bit-windows-answers/) link.
   - If you are using a Mac made after 2007 you will have a 64-bit architecture. If your computer is older, see [this](https://www.macobserver.com/tips/how-to/mac-32-bit-64-bit/) guide.
 - Run the installer.
-- You will get a prompt to install Visual Studio Code. We do not need this text editor for this course, so you do not need to download it.
 
 ## Setting up a virtual environment
 Different projects might need to use different versions of Python. We will, therefore, set up a "virtual environment" that we can use for executing Python code. This will also enable us to access the packages we want and ensure they do not conflict.
 - Launch `Anaconda-Navigator`
   - you will find the Anaconda-Navigator in launchpad in macOS and in the start menu in Windows.
 - Go to the _Environments_ tab on the left-hand side of the screen.
+![](Images/Anaconda0.png)
 - Click the _Create_ button at the bottom of the screen.
 - The dialogue seen in this figure will appear:
 ![](Images/Anaconda1.png)
-  - Give the environment a name of your choosing (for example "PHYS_TUT").
-  - Select the check-box for Python and select 2.7 from the dropdown (yes, 2.7, not 3.7, even though you downloaded the 3.7 release). This is the version of Python we are going to use.
+  - Give the environment a name of your choosing (for example `phys_py37`).
+  - Select the check-box for Python and select 3.7 from the dropdown. This is the version of Python we are going to use.
   - Ensure R is unchecked. R is an entirely separate programming language focussed on statistics applications.
   - Select _Create_.
 
@@ -37,23 +37,22 @@ The package manager in Anaconda is called Conda. We can now install the packages
 ![](Images/Anaconda2.png)
 
 - Select _Not installed_ from the dropdown to show all the packages Anaconda knows about that are not installed in your environment already.
-- Search for `pyserial`. When it appears, select the checkbox for the package and hit _Apply_.
+- Search for `matplotlib`. When it appears, select the checkbox for the package and hit _Apply_.
 
 ![](Images/Anaconda3.png)
 
 - Select _Apply_ in the dialogue that appears to confirm installation of the dependencies, and wait until the package is installed.
-- Repeat this process to install `matplotlib`, `numpy` and `scipy`.
 
 ### Using the _pip_ package manager
-We are going to use a package called "Arduino-Python" a lot as we progress in the course. This package is not available through the package manager in Anaconda. To install it, we need to use another package manager called _pip_. It works well together with Conda.
+We are going to use a package called "Arduino-Python3" a lot as we progress in the course. This package is not available through the package manager in Anaconda. To install it, we need to use another package manager called _pip_. It works well together with Conda.
 
-To install "Arduino-Python" with _pip_, do the following:
+To install "Arduino-Python3" with _pip_, do the following:
  - Go to the environments tab of Anaconda.
  - Click the play button next to the Python environment you set up earlier.
  - Click _Open Terminal_.
 
 You will get a Terminal/Command Line window which is referencing the Conda environment you launched it from.
- - Type `pip install arduino-python` followed by return.
+ - Type `pip install arduino-python3` followed by return.
  - _pip_ will set to work and give you a message indicating if the installation was successful.
    - If the package was successfully installed, close the Terminal/Command Line window and return to Anaconda.
    - If you encountered an error, ask for help.
@@ -67,14 +66,14 @@ Spyder is a scientific Python development environment that makes it easy to writ
 ### Installation
  You can install it from within Anaconda as follows:
 - Go to the _Home_ tab on the upper left side of the Anaconda window.
-- Ensure the _Applications on_ dropdown on the top of the screen is set to the environment "PHYS_TUT" that we just created.
+- Ensure the _Applications on_ dropdown on the top of the screen is set to the environment `phys_py37` that we just created.
 - Find Spyder and click _Install_. Wait until the installation is completed.
 
 ![](Images/Anaconda4.png)
 
 ### Use
 To start working with Spyder, do the following:
-- Again, ensure the _Applications on_ dropdown on the top of the screen is set to the environment "PHYS_TUT" that we just created (or whichever environment you want to run code in).
+- Again, ensure the _Applications on_ dropdown on the top of the screen is set to the environment `phys_py37` that we just created (or whichever environment you want to run code in).
 - Hit "Launch" on Spyder.
 - You are now greeted with the Spyder interface. It consists of three parts:
   - Code editor: where you write your Python code
