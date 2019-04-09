@@ -1,20 +1,6 @@
-# -*- coding: utf-8 -*-
 """
-Spyder Editor
-
-This is a temporary script file.
+Program to 
 """
-
-
-#from Arduino import Arduino
-#import time
-#
-#board = Arduino('9600') #plugged in via USB, serial com at rate 9600
-#print('Connected')
-#
-#board.pinMode(5, "OUTPUT")
-#board.analogWrite(5, 200)
-
 
 from Arduino import Arduino
 import time
@@ -22,7 +8,7 @@ import time
 # NEW, import csv library
 import csv
 
-PORT_NAME = '/dev/tty.usbserial-1420' # MUST BE UPDATED TO USE THE CORRECT PORT
+PORT_NAME = 'COM3'                    # MUST BE UPDATED TO USE THE CORRECT PORT
 FILE_NAME = 'pendulum_data.csv'       # name of file that data will be written to
 PIN_SENSE = 12                        # pin where ultrasic sensor is connected
 
@@ -46,12 +32,13 @@ try:
         # write list of data to file
         currentTime = time.time()-startTime
         data = [currentTime, distance]
-        
+
         writer.writerow(data) # write data to file
         print('time = %5.2f   distance = %5.1f' % tuple(data))
-        
+
         time.sleep(0.5) # delay to keep UART bus for getting overloaded
 
 # press ctrl+c while the console is active to terminate the program
 except KeyboardInterrupt:
-    f.close() # close file gracefully when program is terminated
+    board.close() # close serial connection
+    f.close()     # close file gracefully when program is terminated

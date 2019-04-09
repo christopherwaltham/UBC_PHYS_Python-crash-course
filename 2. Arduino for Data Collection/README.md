@@ -3,12 +3,12 @@
 ## Introduction
 Now, we are ready to start working with microprocessors. For this course, we will use the [Arduino Nano](https://store.arduino.cc/usa/arduino-nano) which is a small board based on the [ATmega328P](https://www.microchip.com/wwwproducts/en/ATmega328p) microcontroller.
 
-To directly program the Arduino Nano, you will have to use C++. Learning two programming languages at once is not easy. What we have done instead, is upload code to the boards so that you can control it by sending commands from your computer through UART (see definition above). In Python, you will write code that runs on your computer, and that will send messages to the Arduino to control it. We will use the Arduino-Python library to achieve this.
+To directly program the Arduino Nano, you will have to use C++. Learning two programming languages at once is not easy. What we have done instead, is upload code to the boards so that you can control it by sending commands from your computer through UART (see definition below). In Python, you will write code that runs on your computer, and that will send messages to the Arduino to control it. We will use the Arduino-Python library to achieve this.
 
 This module relies on a lot of concepts and technologies, some of which you may not have hard of before. There is a glosary and theory section at the end of the lab that you can refference.
 
 ## Task 1: Getting Familiar with the Breadboard
-To verify how the breadboard is connected, use a multimeter to probe the pins.
+To understand how the breadboard is connected, use a multimeter to probe the pins.
 
 Some questions to consider:
 - Which setting on the multimeter should you use to determine which pins are connected and which are not?
@@ -17,9 +17,9 @@ Some questions to consider:
 Draw a picture of the breadboard and its internal connections in your lab notebook.
 
 ## Task 2: Controlling an LED
+We start by using the microcontroller to drive an LED.
 
 ### Circuit
-We are ready to connect our first circuit.
 - Place a 100 to 500 ohm resistor in series with the LED. The resistor limits the current moving through the LED so that it does not overheat and get damaged.
 - Make sure to connect the cathode of the diode to ground. The cathode is the side with the shortest leg and with a small flat notch on the diode housing.
 - Notice that we are connecting the LED to pin D5. This will be important in the next step when we want to control this pin.
@@ -36,30 +36,39 @@ You need to update the variable `portName` to correspond to the name of the port
 ```python
 # import libraries
 from Arduino import Arduino
-
-PORT_NAME = 'COM3'                     # example of Windows port name
-#portName = '/dev/tty.usbserial-1410'  # exmaple of Mac port name
-
-board = Arduino('9600', port=PORT_NAME) # find and connect microcontroller
-print('Connected')                     # confirms the microcontroller has been found
-
-board.pinMode(5, 'OUTPUT')             # configure pin D5 to be an output pin
-
-board.digitalWrite(5, 'HIGH')          # make LED light up
-#board.digitalWrite(5, 'LOW')          # uncomment this line to turn LED off
-```
-
-#### Flashing LED
-You can now expand your program to do something more interesting. What about have the LED flash on and off continuously? To achieve this, add the following to the code you just wrote:
-
-```python
 import time
 
+PORT_NAME = 'COM3'                    # example of Windows port name
+#portName = '/dev/tty.usbserial-1410' # exmaple of Mac port name
+
+board = Arduino('9600', port=PORT_NAME) # find and connect microcontroller
+print('Connected')                      # confirms the microcontroller has been found
+
+time.sleep(2)                 # wait for 2 seconds to allow microcontroller to reboot
+
+board.pinMode(3, 'OUTPUT')    # configure pin D5 to be an output pin
+
+board.digitalWrite(3, 'HIGH') # make LED light up
+```
+
+Things to note:
+- You must type `'OUTPUT'`, `'HIGH'` and `'LOW'` with the capital letters.
+- If you have problems, try disconnecting and reconnecting the Arduino or restarting the kernel in Spyder.
+- The microcontroller will reboot every time a serial connection is establised. A delay is used to allow the microcontroller to boot so that it can process the two commands sent.
+- If the program does not work, you can try increasing this delay or moving on to the next part where more commands are sent.
+
+If you get the error message
+`SerialException: could not open port 'COM3': PermissionError(13, 'Access is denied.', None, 5)`, disconnect and reconnect the Arduino. This happens because the serial connection has not been closed properly. We will fix this issue further on.
+
+#### Flashing LED
+You can now expand your program to do something more interesting. What about making the LED flash on and off continuously? To achieve this, add the following to the code you just wrote:
+
+```python
 # enter infinite loop
 while True:
-    board.digitalWrite(5, 'LOW')   # set pin LOW (0V)
+    board.digitalWrite(3, 'LOW')   # set pin LOW (0V)
     time.sleep(1)                  # wait 1 second
-    board.digitalWrite(5, 'HIGH')  # set pin HIGH (5V)
+    board.digitalWrite(3, 'HIGH')  # set pin HIGH (5V)
     time.sleep(1)                  # wait 1 second
 ```
 
@@ -92,9 +101,6 @@ board.analogWrite(5, 200)              # set LED to half brightness
 Now, use the oscilloscope to see how the voltage to the LED changes with time. Connect the oscilloscope ground probe to the ground rail on the breadboard, and connect the signal probe to the digital output pin D5 on the Arduino that we are using to drive the LED.
 ![](Images/scope_connection.jpg)
 
-If you would like a refresher on how to use these tablet scopes, you can take a look at this video:
-TODO: include a video link
-
 - Turn off the second channel CH2 on the cope, as we are not using it.
 - Adjust the scope time scale and voltage level for CH1 so that you see a PWM wave as shown in this picture.
 ![](Images/scope_base.png)
@@ -110,10 +116,10 @@ TODO: include a video link
 Are these measurements what you expect them to be? Does the duty cycle correspond with what you set it to?
 
 Note:
-- The clock frequency of the ATMega328P is 16 MHz, and that it uses 8-bit resolution for its PWM outputs. That is, the microprocessor counts to 2^8 = 256 once for every rising edge it generates.
-- Your argument to the analogWrite function dictates how many of the 256 clock cycles the pin should be held in the ON state.
+- The clock frequency of the ATMega328P is 16 MHz. It uses 8-bit resolution for its PWM outputs. That is, the microprocessor counts to 2^8 = 256 once for every rising edge it generates.
+- Your argument to the `analogWrite` function dictates how many of the 256 clock cycles the pin should be held in the `HIGH` state.
 
-Extra: [looking at transient system behaviour](Voltage_Transients.md).
+If you have time, you can take a look at [this module about transient behaviour](Voltage_Transients.md).
 
 ## Task 3: Controlling an RGB LED
 We are now ready to look at an RGB LED. This is a device that contains a red, green and blue LED in one package. Controlling the relative brightness of the different color-channels will enable us to display just about any color, making this a very cool device to play with.
@@ -124,7 +130,11 @@ To be able to set the brightness of each pin, we will have to use the PWM enable
 
 Remember to include current limiting resistors in your circuit, and to update `portName`.
 
-The following code will continuously flash the three primary colors for 1 second each. The `try: except` block surrounding the loop enables us to break out of the loop by hitting `ctrl` + `c` on the keyboard while the _iPhython console_ is the active window.
+The following code will continuously flash the three primary colors for 1 second each.
+
+The `try: except` block is part of Python's error handling functionality. Placing your loop inside this statement enables you to use the shortcut `ctrl` + `c` to terminate the program (the console must be active for this to work). This shortcut is very commonly used to terminate program execution.
+
+The `except` block also closes the serial connection to the board properly whenever the user termiates program execution.
 
 ```python
 # import libraries
@@ -170,14 +180,13 @@ try:
 
 # press ctrl+c while the console is active to terminate the program
 except KeyboardInterrupt:
-    pass
+    board.close() # close the serial connection
 ```
 
-The `try: except` block is part of Python's error handling functionality. Placing your loop inside this statement enables you to use the shortcut `ctrl` + `c` to terminate the program (the console must be active for this to work). This shortcut is very commonly used to terminate program execution.
 
 ### Exercises
 You can now modify the code.
-- Can you make the LED be yellow?
+- Can you make the LED be orange?
 - What about making the color of the LED change gradually?
 
 
