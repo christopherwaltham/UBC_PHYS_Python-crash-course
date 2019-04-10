@@ -56,6 +56,7 @@ Things to note:
 - If you have problems, try disconnecting and reconnecting the Arduino or restarting the kernel in Spyder.
 - The microcontroller will reboot every time a serial connection is establised. A delay is used to allow the microcontroller to boot so that it can process the two commands sent.
 - If the program does not work, you can try increasing this delay or moving on to the next part where more commands are sent.
+- If the LED does not turn on, you can try truning it around to see if it was inserted the wrong way.
 
 If you get the error message
 `SerialException: could not open port 'COM3': PermissionError(13, 'Access is denied.', None, 5)`, disconnect and reconnect the Arduino. This happens because the serial connection has not been closed properly. We will fix this issue further on.
