@@ -1,20 +1,19 @@
 """
-Program to 
+Program to measure distance using ultrasonic sensor. 
 """
 
 from Arduino import Arduino
 import time
-
-# NEW, import csv library
 import csv
 
-PORT_NAME = 'COM3'                    # MUST BE UPDATED TO USE THE CORRECT PORT
-FILE_NAME = 'pendulum_data.csv'       # name of file that data will be written to
-PIN_SENSE = 12                        # pin where ultrasic sensor is connected
+PORT_NAME = '/dev/tty.usbserial-1420'              # MUST BE UPDATED TO USE THE CORRECT PORT
+FILE_NAME = 'pendulum_data.csv' # name of file that data will be written to
+PIN_SENSE = 12                  # pin where ultrasic sensor is connected
 
 # connect to Arduino
 board = Arduino('9600', port=PORT_NAME)
 print('Connected')
+
 f = open(FILE_NAME,'a')              # open a file for 'a'ppending
 writer = csv.writer(f,delimiter=',') # prepare for writing to file
 
@@ -36,7 +35,7 @@ try:
         writer.writerow(data) # write data to file
         print('time = %5.2f   distance = %5.1f' % tuple(data))
 
-        time.sleep(0.5) # delay to keep UART bus for getting overloaded
+        time.sleep(1) # delay to keep UART bus for getting overloaded
 
 # press ctrl+c while the console is active to terminate the program
 except KeyboardInterrupt:

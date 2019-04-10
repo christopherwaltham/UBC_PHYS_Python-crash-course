@@ -57,8 +57,8 @@ You now know all you know to start writing code to interface with the ultrasonic
 from Arduino import Arduino
 import time
 
-PORT_NAME = '/dev/tty.usbserial-1420' # MUST BE UPDATED TO USE THE CORRECT PORT
-PIN_SENSE = 12                        # pin where ultrasic sensor is connected
+PORT_NAME = '/dev/tty.usbserial-1420'              # MUST BE UPDATED TO USE THE CORRECT PORT
+PIN_SENSE = 12                  # pin where ultrasic sensor is connected
 
 # connect to Arduino
 board = Arduino('9600', port=PORT_NAME)
@@ -66,14 +66,14 @@ print('Connected')
 
 try:
     while True:
-        pulseTime = board.pulseIn_set(PIN_SENSE, 'HIGH') # in micro-seconds
+        # make distance measurement
+        pulseTime = board.pulseIn_set(PIN_SENSE, 'HIGH')
         print(pulseTime)
 
-        time.sleep(0.5)
+        time.sleep(1) # delay to keep UART bus for getting overloaded
 
-# press ctrl+c while the console is active to terminate the program
 except KeyboardInterrupt:
-    pass
+    board.close() # close serial connection
 ```
 
 By running this program, you should see numbers print to your console in rapid succession.
@@ -110,22 +110,21 @@ You can use the `csv` library to write data to a file. This can be very useful f
 ```python
 from Arduino import Arduino
 import time
+import csv # new, for writing to file
 
-# NEW, import csv library
-import csv
-
-PORT_NAME = '/dev/tty.usbserial-1420' # MUST BE UPDATED TO USE THE CORRECT PORT
-FILE_NAME = 'pendulum_data.csv'       # name of file that data will be written to
-PIN_SENSE = 12                        # pin where ultrasic sensor is connected
+PORT_NAME = '/dev/tty.usbserial-1420'              # MUST BE UPDATED TO USE THE CORRECT PORT
+FILE_NAME = 'pendulum_data.csv' # name of file that data will be written to
+PIN_SENSE = 12                  # pin where ultrasic sensor is connected
 
 # connect to Arduino
 board = Arduino('9600', port=PORT_NAME)
 print('Connected')
+
 f = open(FILE_NAME,'a')              # open a file for 'a'ppending
 writer = csv.writer(f,delimiter=',') # prepare for writing to file
 
 # Write data-field titles to file
-writer.writerow(['Counter', 'Time (s)', 'Distance (cm)'])
+writer.writerow(['Time (s)', 'Distance (cm)'])
 
 startTime = time.time() # capture current time as datum
 
@@ -142,11 +141,12 @@ try:
         writer.writerow(data) # write data to file
         print('time = %5.2f   distance = %5.1f' % tuple(data))
 
-        time.sleep(0.5) # delay to keep UART bus for getting overloaded
+        time.sleep(1) # delay to keep UART bus for getting overloaded
 
 # press ctrl+c while the console is active to terminate the program
 except KeyboardInterrupt:
-    f.close() # close file gracefully when program is terminated
+    board.close() # close serial connection
+    f.close()     # close file gracefully when program is terminated
 ```
 
 ### Extra Exercise: Handling Exceptions
