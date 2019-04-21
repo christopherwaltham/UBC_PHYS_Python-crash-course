@@ -29,7 +29,7 @@ from Arduino import Arduino
 import time
 import csv
 
-PORT_NAME = '/dev/tty.usbserial-1420' # MUST BE UPDATED TO USE THE CORRECT PORT
+PORT_NAME = '/dev/tty.usbserial-1410' # MUST BE UPDATED TO USE THE CORRECT PORT
 FILE_NAME = 'pendulum_data.csv'       # name of file that data will be written to
 PIN_SENSE = 12                        # pin where ultrasic sensor is connected
 
@@ -65,6 +65,7 @@ try:
 
 # press ctrl+c while the console is active to terminate the program
 except KeyboardInterrupt:
+    board.close()
     f.close() # close file gracefully when program is terminated
 ```
 

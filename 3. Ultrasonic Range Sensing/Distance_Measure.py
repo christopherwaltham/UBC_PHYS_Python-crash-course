@@ -1,5 +1,5 @@
 """
-Program to measure distance using ultrasonic sensor. 
+Program to measure distance using ultrasonic sensor.
 """
 
 from Arduino import Arduino
