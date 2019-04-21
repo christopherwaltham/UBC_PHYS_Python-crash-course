@@ -34,7 +34,7 @@ FILE_NAME = 'pendulum_data.csv'       # name of file that data will be written t
 PIN_SENSE = 12                        # pin where ultrasic sensor is connected
 
 # connect to Arduino
-board = Arduino('9600', port=PORT_NAME)
+board = Arduino('115200', port=PORT_NAME)
 print('Connected')
 
 f = open(FILE_NAME,'a')              # open a file for 'a'ppending

@@ -14,7 +14,7 @@ import time
 portName = '/dev/tty.usbserial-1410'    # exmaple of Mac port name
 pin = 5
 
-board = Arduino('9600', port=portName) # find and connect microcontroller
+board = Arduino('115200', port=portName) # find and connect microcontroller
 print('Connected')                     # confirms the microcontroller has been found
 
 time.sleep(2)

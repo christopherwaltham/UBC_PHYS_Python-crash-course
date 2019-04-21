@@ -8,7 +8,7 @@ import time
 
 portName = 'COM3'
 
-board = Arduino('9600', port=portName)  # find and connect microcontroller
+board = Arduino('115200', port=portName)  # find and connect microcontroller
 print('Connected')                      # confirms the microcontroller has been found
 
 time.sleep(2)

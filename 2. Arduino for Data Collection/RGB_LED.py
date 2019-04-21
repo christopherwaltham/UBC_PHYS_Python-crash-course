@@ -10,7 +10,7 @@ import time
 #portName = 'COM3'                    # example of Windows port name
 portName = '/dev/tty.usbserial-1420'  # exmaple of Mac port name
 
-board = Arduino('9600', port=portName)  # find and connect microcontroller
+board = Arduino('115200', port=portName)  # find and connect microcontroller
 print('Connected')                      # confirms the microcontroller has been found
 
 time.sleep(2)

@@ -15,7 +15,7 @@ int echoPin = 11;    // Echo
  
 void setup() {
   //Serial Port begin
-  Serial.begin (9600);
+  Serial.begin (115200);
   //Define inputs and outputs
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
