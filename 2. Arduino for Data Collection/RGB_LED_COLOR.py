@@ -9,9 +9,7 @@ import time
 portName = 'COM3'
 
 board = Arduino('115200', port=portName)  # find and connect microcontroller
-print('Connected')                      # confirms the microcontroller has been found
-
-time.sleep(2)
+print('Connected')                        # confirms the microcontroller has been found
 
 # Pin numbers
 RED   = 3

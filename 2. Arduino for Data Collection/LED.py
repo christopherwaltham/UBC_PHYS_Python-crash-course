@@ -17,7 +17,7 @@ portName = '/dev/tty.usbserial-1410'    # exmaple of Mac port name
 pin = 5
 
 board = Arduino('115200', port=portName) # find and connect microcontroller
-print('Connected')                     # confirms the microcontroller has been found
+print('Connected')                       # confirms the microcontroller has been found
 
 board.pinMode(pin, 'OUTPUT')           # configure pin D5 to be an output pin
 
