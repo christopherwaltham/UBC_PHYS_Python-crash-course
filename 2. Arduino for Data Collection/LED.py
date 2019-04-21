@@ -12,18 +12,15 @@ Progrm to turn an LED on and off.
 from Arduino import Arduino
 import time
 
-#portName = 'COM3'                      # example of Windows port name
-portName = '/dev/tty.usbserial-1410'    # exmaple of Mac port name
 pin = 5
 
-board = Arduino('115200', port=portName) # find and connect microcontroller
-print('Connected')                       # confirms the microcontroller has been found
+board = Arduino()  # find and connect microcontroller
+print('Connected') # confirms the microcontroller has been found
 
-board.pinMode(pin, 'OUTPUT')           # configure pin D5 to be an output pin
+board.pinMode(pin, 'OUTPUT')   # configure pin D5 to be an output pin
 
-#board.digitalWrite(5, 'LOW')          # uncomment this line to turn LED off
-
-try: # error handeling block
+# error handeling block
+try: 
 
     # enter infinite loop
     while True:

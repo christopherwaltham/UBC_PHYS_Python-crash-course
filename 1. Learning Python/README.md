@@ -46,15 +46,15 @@ a == b   # False
 a+a == b # True
 ```
 
-The single equals sign we just saw is an assignment. `a = 2` assigns the value of 2 to a. The double equals sign `==` tests for equality: `a == 2`
+The single equals sign we just saw is an assignment. `a = 2` assigns the value of 2 to `a`. The double equals sign `==` tests for equality: `a == 2`
 tests whether the value of `a` is equal to 2.
 
 ### Inequalities
 Similarly, you can check for inequalities by using
-- `a < b`, a less than b
-- `a > b`, a greater than b
-- `a <= b`, a less than or equal to b
-- `a >= b`, a greater than or equal to b
+- `a < b`, `a` less than `b`
+- `a > b`, `a` greater than `b`
+- `a <= b`, `a` less than or equal to `b`
+- `a >= b`, `a` greater than or equal to `b`
 
 ## Strings
 You can also set variables to be equal to text. For this to work, you need to surround the text with quotation marks:
@@ -111,42 +111,12 @@ Thus, you can compute the mean of your list by
 ```python
 mean = sum(numbers) / len(numbers)
 mean # prints the variable to the screen
-# There is a problem here - can you spot it? See the next section on data-types.
 ```
 
 These are just a few things that you can do with numbers and lists. For more information, you can, for example, search the web for "python lists". You will find lots of great information, such as [this article from _Google for Education_](https://developers.google.com/edu/python/lists).
 
-There are many other collection types in Python, that do the same essential job as lists, but has more functionality. [Arrays](https://www.pythoncentral.io/the-difference-between-a-list-and-an-array/) are for example better for performing mathemtaical operations.
+There are many other collection types in Python that do the same essential job as lists, but has more functionality. [Arrays](https://www.pythoncentral.io/the-difference-between-a-list-and-an-array/) are for example better for performing mathemtaical operations. [Numpy Arrays](https://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html) are even more powerful. They are part of the `numpy` package for scientific computing in Python.
 
-## Data-types
-Do you notice something strange when computing the average above? If your mean is not a whole number, Python will return the largest integer value less than the mean. This is because each variable has a type associated with it. The two types of interest here are:
-- Integers: whole numbers (can be positive or negative)
-- Floats: numbers with decimal places
-
-When you declare a variable and set it equal to a whole number (without any decimal places) Python automatically interprets that as an integer. If you input a number with decimal places, Python interprets it as a float.
-
-```python
-a = 1   # stored as integer
-b = 1.0 # stored as a float
-```
-
-When dividing two integers by each other, the result is an integer. Therefore, we lose the information about decimal places. This is called truncation, as Python will not round to the nearest integer, but chop off all the decimal places from the number.
-
-On the other hand, if one or both of the numbers are floats, the result will be a float evaluated from a floating point division.
-
-```python
-3/4        # evaluates to 0
-3.0/4      # evaluates to 0.75
-3/4.0      # evaluates to 0.75
-float(3)/4 # evaluates to 0.75
-float(3/4) # evaluates to 0.0, can you figure out why?
-```
-
-So, to fix the issue when computing the mean from earlier, we can say one of the following:
-```python
-float(sum(numbers)) / len(numbers)
-sum(numbers) / float(len(numbers))
-```
 
 ## Writing code in a file
 If you want to make more complicated programs with commands that span across multiple lines, it is easier to have the code in a file rather than typing it into the terminal. You can do this as follows:
@@ -179,7 +149,7 @@ As you have noticed, the Spyder editor already populated your python file with a
 ## `If` statements
 It is possible to have parts of code execute only when you want it to.
 
-The expression you place after `if` is evaluated by the Python interpreter to determine if it is `True` or `False`. If you go back to the section on equality, you will find that these are very useful in conjunction with `if` statements! You can for example say
+The expression you place after `if` is evaluated by the Python interpreter to determine if it is `True` or `False`. If you go back to the section on equality, you will find that these operators are very useful in conjunction with `if` statements! You can for example say
 
 ```python
 a = 5
@@ -195,7 +165,7 @@ if a == 5: # evaluates to False
 print(a)   # 'a' is still 2
 ```
 
-Python is a special language in that how you indent your lines (how many spaces you have before the first character on a line) matters. Therefore, the code below will print the value of _a_ only if the `if` block is executed.
+Python is a special language in that how you indent your lines (how many spaces you have before the first character on a line) matters. Therefore, the code below will print the value of `a` only if the `if` block is executed.
 
 ```python
 a = 5
@@ -210,7 +180,7 @@ If you want to execute the same lines of code many times in a row, loops are han
 ### `While` loops
 The `while` loop works a bit like the `if` statement. The difference is that the `while` loop will continue to execute the while block until the condition becomes `False`.
 
-In the following code, for example, we print the numbers from 0 to 5.
+In the following code, for example, we print the numbers from 1 to 5.
 
 ```python
 a = 0
@@ -228,8 +198,10 @@ for item in list:
     print(item * 2)
 ```
 
+[This](https://www.learnpython.org/en/Loops) is a good resource for more information about loops.
+
 ## Functions
-To make their code more readable and easy to reuse, programmers use functions. This a very powerful concept that enables us to do a lot of computation by calling a function in one line of code. It means that we do not need to know the exact details of how the function works.
+To make their code more readable and easy to reuse, programmers use functions. This is a very powerful concept that enables us to do a lot of computation in one line of code, simply by calling a function. It means that we do not need to know the exact details of how the function works.
 
 You have used multiple functions already. `print()` is a function in Python that prints what you pass to it (what is inside the parenthesis) to the console. `len()` and `sum()` are other functions.
 
@@ -254,8 +226,8 @@ And you can call it by saying
 value = functionName(a, b)
 ```
 
-- Inside the function, you will be able to access _a_ as _argument1_ and _b_ as _argument2_.
-- After the function has completed executing, _value_ will have the same value as the variable _returnArgument_ that you returned in the function.
+- Inside the function, you will be able to access `a` as `argument1` and `b` as `argument2`.
+- After the function has completed executing, `value` will have the same value as the variable `returnArgument` that you returned in the function.
 
 Let us take a look at a practical example:
 
@@ -280,6 +252,89 @@ You can declare a list of all numbers from zero to N by saying `range(N)`. This 
 for index in range(100):
   # code is executed 100 times with index = 0, 1, 2, ..., 99
 ```
+
+#### `abs()`
+Returns the absolute value (magnitude) of a variable.
+
+#### `min()`
+Returns the smallest value in a list.
+
+#### `max()`
+Returns largest value in a list.
+
+#### `round()`
+Round a number to its nearest integer value.
+
+#### `sorted()`
+Sorts a list into ascending order.
+
+## Object Oriented Programming
+Object oriented programing is a programming paradigm that makes it easy to bundle variables and functions into groups called objects. It makes it possible to think of our blocks of code as physical objects that have certain properties and abilities.
+
+The primitive data structures available in Python (numbers, strings, lists, etc.) are designed to represent simple things like the size of something, the name of a song, and your favorite colors, respectively.
+
+If we want to represent something more complex, we can use a class. Classes are used to create new user-defined data structures that contain arbitrary information about something. A class can for example store strings and integers corresponding to the name and age of a person.
+
+In the next module, we will use classes extensivley, so it is good to become familiar with the syntax.
+
+#### Importing a class from a library
+Let us use the Arduino class as an example. You import the class Arduno from the library called Arduino using the command:
+```Python
+from Arduino import Arduino
+```
+
+#### Constructor
+You can now initialize an _instance_ of this class by calling its constructor:
+```Python
+board = Arduino()
+```
+which will initialize a connection to the microcontroller. Do not try to execute these commands today (you will get an error).
+
+Depending on the class, you may have to pass some parameters to the constructor. For the Arduino class, you have optional parameters you can pass if you want to spesify certain properties. You can find this type of information in the package [documentation](https://github.com/mkals/Arduino-Python3-Command-API).
+
+
+#### Instance Methods
+
+The Arduino class has instance methods you can call on your instance  `board` such as:
+```Python
+value = board.version()
+```
+
+These methods are like any other functions, expect that they are able to access properties associated with the object instance (such as the serial connection to the Ardubo board).
+
+If you want to learn more about classes and how you can make your own, [this tutorial](https://realpython.com/python3-object-oriented-programming/) gives a good introduction. For basic programming with Python, it enough to know how you use them. 
+
+
+
+
+
+It’s important to note that a class just provides structure—it’s a blueprint for how something should be defined, but it doesn’t actually provide any real content itself.
+
+
+Let us define an empty simple class to keep track of Students at our university.
+
+An empty class looks like this.
+```Python
+class Student:
+    pass
+```
+
+We can give the student _instance properties_ - pieces of information associated with each student.
+```Python
+class Student:
+
+    # Initializer
+    def __init__(self, name, age):
+        self.firstName = firstName
+        self.lastName = lastName
+        self.studentNumber = studentNumber
+
+    def updateFirstName(self, newFirstName):
+        self.firstName = newFirstName
+```
+
+
+
 
 ## Exercises
 - Write a program that computes the sum of the 100 first natural numbers (1,2,3,4..100).

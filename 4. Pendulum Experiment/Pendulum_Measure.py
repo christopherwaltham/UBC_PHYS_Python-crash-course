@@ -8,12 +8,11 @@ from Arduino import Arduino
 import time
 import csv
 
-PORT_NAME = '/dev/tty.usbserial-1410' # MUST BE UPDATED TO USE THE CORRECT PORT
 FILE_NAME = 'pendulum_data.csv'       # name of file that data will be written to
 PIN_SENSE = 12                        # pin where ultrasic sensor is connected 
 
 # connect to Arduino
-board = Arduino('115200', port=PORT_NAME)
+board = Arduino()
 print('Connected')
 
 f = open(FILE_NAME,'a')              # open a file for 'a'ppending
