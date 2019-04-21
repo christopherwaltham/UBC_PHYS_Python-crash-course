@@ -5,8 +5,8 @@ We are going to need multiple tools for the workshop. This module guides you thr
 Anaconda is a package manager (a program that helps you install all the things you need, and that keeps it organized) which is made for Python. To install Anaconda, do the following:
 
 - Download the _Python 3.7 version_ installer suitable for your operating system from https://www.anaconda.com/download/
-  - If you are using a Windows computer, you will need to know if your computer is built on a 32-bit or 64-bit architecture. You can find this by following the instructions in [this](https://www.howtogeek.com/howto/21726/how-do-i-know-if-im-running-32-bit-or-64-bit-windows-answers/) link.
-  - If you are using a Mac made after 2007 you will have a 64-bit architecture. If your computer is older, see [this](https://www.macobserver.com/tips/how-to/mac-32-bit-64-bit/) guide.
+  - If you are using a Windows computer, you will need to know if your computer is built on a 32-bit or 64-bit architecture. You can find this in the _About your PC_ section of _System Settings_. If you are uncertain how to find this, you can follow [these instructions](https://support.wdc.com/knowledgebase/answer.aspx?ID=9405).
+  - If you are using a Mac made after 2007 you will have a 64-bit architecture.
 - Run the installer.
 
 ## Setting up a virtual environment
@@ -14,16 +14,19 @@ Different projects might need to use different versions of Python. We will, ther
 - Launch `Anaconda-Navigator`
   - you will find the Anaconda-Navigator in launchpad in macOS and in the start menu in Windows.
 - Go to the _Environments_ tab on the left-hand side of the screen.
+
 ![](Images/Anaconda0.png)
+
 - Click the _Create_ button at the bottom of the screen.
-- The dialogue seen in this figure will appear:
-![](Images/Anaconda1.png)
+- The dialogue seen in the following figure will appear:
   - Give the environment a name of your choosing (for example `phys_py37`).
   - Select the check-box for Python and select 3.7 from the dropdown. This is the version of Python we are going to use.
   - Ensure R is unchecked. R is an entirely separate programming language focussed on statistics applications.
   - Select _Create_.
 
-You have now made your own environment. It may appear below your "base (root)" environment which is the global environment on your computer. Other applications may be using this global environment, so if we install packages here, they may interfere. By keeping a separate virtual environment, you ensure this does not happen.
+![](Images/Anaconda1.png)
+
+You have now made your own environment. It may appear below your "base (root)" environment which is the global environment on your computer. Other applications may be using this global environment, so if we install packages here, problems may arise. By keeping a separate virtual environment, you ensure this does not happen.
 
 ## Installing packages
 The functionality of programming languages is often separated into libraries. In Python, these libraries are called _packages_ that we can download and access to make our work easier.
@@ -41,7 +44,7 @@ The package manager in Anaconda is called Conda. We can now install the packages
 
 ![](Images/Anaconda3.png)
 
-- Select _Apply_ in the dialogue that appears to confirm installation of the dependencies, and wait until the package is installed.
+- Select _Apply_ in the dialogue that appears to confirm the installation of the dependencies, and wait until the package is installed.
 - You can also install `scipy` in the same way as we will need it towards the end of the week.
 
 ### Using the _pip_ package manager
