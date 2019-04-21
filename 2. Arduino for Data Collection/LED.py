@@ -3,6 +3,8 @@
 """
 Created on Fri Feb 22 21:30:16 2019
 
+Progrm to turn an LED on and off.
+
 @author: mkals
 """
 
@@ -16,8 +18,6 @@ pin = 5
 
 board = Arduino('115200', port=portName) # find and connect microcontroller
 print('Connected')                     # confirms the microcontroller has been found
-
-time.sleep(2)
 
 board.pinMode(pin, 'OUTPUT')           # configure pin D5 to be an output pin
 

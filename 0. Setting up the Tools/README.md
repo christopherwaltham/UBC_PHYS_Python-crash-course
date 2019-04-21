@@ -42,11 +42,12 @@ The package manager in Anaconda is called Conda. We can now install the packages
 ![](Images/Anaconda3.png)
 
 - Select _Apply_ in the dialogue that appears to confirm installation of the dependencies, and wait until the package is installed.
+- You can also install `scipy` in the same way as we will need it towards the end of the week.
 
 ### Using the _pip_ package manager
-We are going to use a package called "Arduino-Python3" a lot as we progress in the course. This package is not available through the package manager in Anaconda. To install it, we need to use another package manager called _pip_. It works well together with Conda.
+We are going to use a package called `Arduino-Python3` a lot as we progress in the course. This package is not available through the package manager in Anaconda. To install it, we need to use another package manager called _pip_. It works well together with Conda.
 
-To install "Arduino-Python3" with _pip_, do the following:
+To install `Arduino-Python3` with _pip_, do the following:
  - Go to the environments tab of Anaconda.
  - Click the play button next to the Python environment you set up earlier.
  - Click _Open Terminal_.
