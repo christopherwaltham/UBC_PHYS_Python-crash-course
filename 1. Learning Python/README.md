@@ -5,7 +5,7 @@ There are two ways you can execute Python code:
 
 We will start by typing instructions directly into the terminal in Syder. Afterward, when we progress to more complex programs, we will use the code editor to make files.
 
-Launch Spyder through Anaconda. See the last section of [module 0](0.%20Setting%20up%20the%20Tools) if you are unsure how to do this.
+Launch Spyder through Anaconda. See the last section of [module 0](../0.%20Setting%20up%20the%20Tools) if you are unsure how to do this.
 
 ## Using python as a calculator
 The easiest thing you can do with Python is to use it as a calculator. We will start by running this code directly from the Spyder Console window.
@@ -286,7 +286,7 @@ for index in range(100):
 - Declare `string = "UBC Physics and Astronomy"`. Make a program that counts the number of 's' characters in this string.
 - Make a function that takes one string as an argument, and returns the number of 's' characters in it. Can you make the character to search for be a parameter as well?
 - Print all prime numbers smaller than 100.
-- Write a function to compute the mode (the number that appears the most frequently) in a list of numbers. 
+- Write a function to compute the mode (the number that appears the most frequently) in a list of numbers.
 
 ## Resources
 - An excellent resource for learning Python can be found [here](https://docs.python.org/2/tutorial/index.html).
