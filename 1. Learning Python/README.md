@@ -24,7 +24,7 @@ b = 2
 a+b # will now be equivalent to saying 1+2
 ```
 
-Note that the assignment operator is directional. It works by assigning the value of the right hand side of `=` to the left hand side. Therefore,
+Note that the assignment operator is directional. It works by assigning the value of the right-hand side of `=` to the left-hand side. Therefore,
 ```python
 a = 1 # a now holds the value 1
 1 = a # error, can't assign to literal
@@ -115,7 +115,7 @@ mean # prints the variable to the screen
 
 These are just a few things that you can do with numbers and lists. For more information, you can, for example, search the web for "python lists". You will find lots of great information, such as [this article from _Google for Education_](https://developers.google.com/edu/python/lists).
 
-There are many other collection types in Python that do the same essential job as lists, but has more functionality. [Arrays](https://www.pythoncentral.io/the-difference-between-a-list-and-an-array/) are for example better for performing mathemtaical operations. [Numpy Arrays](https://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html) are even more powerful. They are part of the `numpy` package for scientific computing in Python.
+There are many other collection types in Python that do the same essential job as lists, but has more functionality. [Arrays](https://www.pythoncentral.io/the-difference-between-a-list-and-an-array/) are for example better for performing mathematical operations. [Numpy Arrays](https://docs.scipy.org/doc/numpy/reference/generated/numpy.array.html) are even more powerful. They are part of the `numpy` package for scientific computing in Python.
 
 
 ## Writing code in a file
@@ -245,6 +245,7 @@ One of the great benefits of Python is that so many people use it and write code
 
 ### A few useful functions
 Below you will find a small list of some handy functions in Python.
+
 #### `range()`
 You can declare a list of all numbers from zero to N by saying `range(N)`. This is very useful when executing loops for example:
 
@@ -268,17 +269,18 @@ Round a number to its nearest integer value.
 #### `sorted()`
 Sorts a list into ascending order.
 
+
 ## Object Oriented Programming
-Object oriented programing is a programming paradigm that makes it easy to bundle variables and functions into groups called objects. It makes it possible to think of our blocks of code as physical objects that have certain properties and abilities.
+Object-oriented programming is a programming paradigm that makes it easy to bundle variables and functions into groups called objects. It makes it possible to think about blocks of code as physical objects that have certain properties and abilities.
 
 The primitive data structures available in Python (numbers, strings, lists, etc.) are designed to represent simple things like the size of something, the name of a song, and your favorite colors, respectively.
 
 If we want to represent something more complex, we can use a class. Classes are used to create new user-defined data structures that contain arbitrary information about something. A class can for example store strings and integers corresponding to the name and age of a person.
 
-In the next module, we will use classes extensivley, so it is good to become familiar with the syntax.
+In the next module, we will use classes extensively, so it is good to become familiar with the syntax:
 
 #### Importing a class from a library
-Let us use the Arduino class as an example. You import the class Arduno from the library called Arduino using the command:
+Let us use the Arduino class as an example. You import the class Arduino from the library called Arduino using the command:
 ```Python
 from Arduino import Arduino
 ```
@@ -288,52 +290,22 @@ You can now initialize an _instance_ of this class by calling its constructor:
 ```Python
 board = Arduino()
 ```
-which will initialize a connection to the microcontroller. Do not try to execute these commands today (you will get an error).
+For the Arduino library, the initializer establishes a connection to the microcontroller. The board must be connected for this to work.
 
-Depending on the class, you may have to pass some parameters to the constructor. For the Arduino class, you have optional parameters you can pass if you want to spesify certain properties. You can find this type of information in the package [documentation](https://github.com/mkals/Arduino-Python3-Command-API).
+Depending on the class, you may have to pass some parameters to the constructor. For the Arduino class, you have optional parameters you can pass if you want to specify certain properties. You can find this type of information in the package [documentation](https://github.com/mkals/Arduino-Python3-Command-API).
 
+We refer to `board` as an instance of the Arduino class. If you wanted to connect multiple microcontrollers to your computer, you can initialize multiple instances of the Arduino class.
 
 #### Instance Methods
-
-The Arduino class has instance methods you can call on your instance  `board` such as:
+The Arduino class has instance methods you can call on your instance  `board` such as
 ```Python
 value = board.version()
 ```
+which returns the version of the Arduino-Python3 library that is running on the microcontroller.
 
-These methods are like any other functions, expect that they are able to access properties associated with the object instance (such as the serial connection to the Ardubo board).
+These methods are like any other functions, except that they are able to access properties associated with the object instance (such as the serial connection to the Arduino board).
 
-If you want to learn more about classes and how you can make your own, [this tutorial](https://realpython.com/python3-object-oriented-programming/) gives a good introduction. For basic programming with Python, it enough to know how you use them. 
-
-
-
-
-
-It’s important to note that a class just provides structure—it’s a blueprint for how something should be defined, but it doesn’t actually provide any real content itself.
-
-
-Let us define an empty simple class to keep track of Students at our university.
-
-An empty class looks like this.
-```Python
-class Student:
-    pass
-```
-
-We can give the student _instance properties_ - pieces of information associated with each student.
-```Python
-class Student:
-
-    # Initializer
-    def __init__(self, name, age):
-        self.firstName = firstName
-        self.lastName = lastName
-        self.studentNumber = studentNumber
-
-    def updateFirstName(self, newFirstName):
-        self.firstName = newFirstName
-```
-
-
+If you want to learn more about classes and how you can make your own, [this tutorial](https://realpython.com/python3-object-oriented-programming/) gives a good introduction. For basic programming with Python, it enough to know how you use them.
 
 
 ## Exercises
