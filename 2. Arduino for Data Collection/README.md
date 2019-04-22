@@ -1,9 +1,9 @@
 # 2. Arduino for Data Collection
 
 ## Introduction
-Now, we are ready to start working with microprocessors. For this course, we will use the [Arduino Nano](https://store.arduino.cc/usa/arduino-nano) which is a small board based on the [ATmega328P](https://www.microchip.com/wwwproducts/en/ATmega328p) microcontroller.
+Now, we are ready to start working with microcontrollers. For this course, we will use the [Arduino Nano](https://store.arduino.cc/usa/arduino-nano) which is a small board based on the [ATmega328P](https://www.microchip.com/wwwproducts/en/ATmega328p) microcontroller.
 
-To directly program the Arduino Nano, you will have to use C++. Learning two programming languages at once is not easy. What we have done instead, is upload code to the boards so that you can control it by sending commands from your computer through UART (see definition below). In Python, you will write code that runs on your computer, and that will send messages to the Arduino to control it. We will use the Arduino-Python library to achieve this.
+To directly program the Arduino Nano, you will have to use C++. Learning two programming languages at once is not easy. What we have done instead, is upload code to the boards so that you can control it by sending commands from your computer through a serialized interface called UART (see definition below). In Python, you will write code that runs on your computer, and that will send messages to the Arduino to control it. We will use the Arduino-Python3 library to achieve this.
 
 This module relies on a lot of concepts and technologies, some of which you may not have hard of before. There is a glosary and theory section at the end of the lab that you can refference.
 
@@ -22,7 +22,7 @@ We start by using the microcontroller to drive an LED.
 ### Circuit
 - Place a 100 to 500 ohm resistor in series with the LED. The resistor limits the current moving through the LED so that it does not overheat and get damaged.
 - Make sure to connect the cathode of the diode to ground. The cathode is the side with the shortest leg and with a small flat notch on the diode housing.
-- Notice that we are connecting the LED to pin D5. This will be important in the next step when we want to control this pin.
+- Notice that we are connecting the LED to pin D3. This will be important in the next step when we want to control this pin.
 
 After you are sure you have connected everything correctly, you can connect the Arduino Nano to your computer using the USB cable. You will see a red status LED on the Arduino board turn on to indicate the Arduino is powered on and ready to execute your commands.
 
@@ -31,33 +31,37 @@ After you are sure you have connected everything correctly, you can connect the 
 ### Programming
 Now, you can control the Arduino by typing the following lines of code into a new file in Spyder. The program will establish a connection with the Arduino over UART and set the external LED to be on.
 
-You need to update the variable `portName` to correspond to the name of the port on your computer that the Arduino is connected to. You can find the port by following [these instructions](Finding_USB_Port_Name.md).
+
+The Arduino library may be able to find the port name automatically. You can try this by using the default constructor without any arguments `board = Arduino()`.
 
 ```python
 # import libraries
 from Arduino import Arduino
-import time
 
-PORT_NAME = 'COM3'                    # example of Windows port name
-#portName = '/dev/tty.usbserial-1410' # exmaple of Mac port name
+board = Arduino()               # find and connect microcontroller
+print('Connected')              # confirms the microcontroller has been found
 
-board = Arduino('115200', port=PORT_NAME) # find and connect microcontroller
-print('Connected')                        # confirms the microcontroller has been found
+board.pinMode(3, 'OUTPUT')      # configure pin D3 to be an output pin
+board.digitalWrite(3, 'HIGH')   # make LED light up
 
-board.pinMode(3, 'OUTPUT')    # configure pin D5 to be an output pin
-
-board.digitalWrite(3, 'HIGH') # make LED light up
+board.close()                   # close the connection to the board
 ```
+
+If this does not work, you need to tell the library which port the Arduino is connected to. You do this by passing the port name to the Arduino constructor. A variable `PORT_NAME` is used here. You must update the value to correspond to the correct port on your computer. You can find the port by following [these instructions](Finding_USB_Port_Name.md).
+
+```python
+#PORT_NAME = 'COM3'                   # example of Windows port name
+PORT_NAME = '/dev/tty.usbserial-1420' # exmaple of Mac port name
+
+board = Arduino(port=PORT_NAME)       # find and connect microcontroller
+print('Connected')                    # confirms the microcontroller has been found
+```
+
 
 Things to note:
 - You must type `'OUTPUT'`, `'HIGH'` and `'LOW'` with the capital letters.
 - If you have problems, try disconnecting and reconnecting the Arduino or restarting the kernel in Spyder.
-- The microcontroller will reboot every time a serial connection is establised. A delay is used to allow the microcontroller to boot so that it can process the two commands sent.
-- If the program does not work, you can try increasing this delay or moving on to the next part where more commands are sent.
 - If the LED does not turn on, you can try truning it around to see if it was inserted the wrong way.
-
-If you get the error message
-`SerialException: could not open port 'COM3': PermissionError(13, 'Access is denied.', None, 5)`, disconnect and reconnect the Arduino. This happens because the serial connection has not been closed properly. We will fix this issue further on.
 
 #### Flashing LED
 You can now expand your program to do something more interesting. What about making the LED flash on and off continuously? To achieve this, add the following to the code you just wrote:
@@ -85,7 +89,7 @@ Alter your code to use the analog print function. It could look something like t
 # import libraries
 from Arduino import Arduino
 
-portName = 'COM3'                      # example of Windows port name
+portName = 'COM3'
 
 board = Arduino('115200', port=portName) # find and connect microcontroller
 print('Connected')                       # confirms the microcontroller has been found
