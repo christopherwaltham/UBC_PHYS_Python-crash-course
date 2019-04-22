@@ -1,6 +1,6 @@
 # Extra Topics
 - Python exception handling
-- Types and Python's weak type system
+- types and Python's weak type system
 - funky python syntax (such as one line loops)
 
 # Exercises
