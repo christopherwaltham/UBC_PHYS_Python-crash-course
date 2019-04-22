@@ -1,7 +1,7 @@
 # 3. Ultrasonic Range Sensing
 
 ## Theory
-The HC-SR04 is an inexpensive distance sensor that is easy to work with. It uses two ultrasonic transducers, one acting as a speaker and one serving as a microphone. The left transducers emit a high-frequency sound pulse that travels through the air. When it hits a solid surface, these pulses are reflected back towards the module. The microphone registers this echo. The time required for the sound to make the trip away and back is used to determine how far the sound has traveled, and thus the distance to the obstacle.
+The HC-SR04 is an inexpensive distance sensor that is easy to work with. It uses two ultrasonic transducers, one acting as a speaker and one serving as a microphone. The left transducer (acting as a speaker) emits a series of high-frequency sound pulses that travels through the air. When they hit a solid surface, these pulses are reflected back towards the module. The right transducer (acting as a microphone) registers this echo. The time required for the sound to make the trip away and back is used to determine how far the sound has traveled, and thus the distance to the obstacle.
 
 ![](Images/sensor_operation.png)
 
@@ -18,7 +18,7 @@ In our case, we will connect TRIG and ECHO to the same pin, as this will enable 
 
 Getting a distance measurement from the module works like this:
 - When you want to make a distance measurement, send a quick pulse to the sensor on the trigger line.
-- The ultrasonic module with use the speaker to send out a sound-pulse and wait for an echo to come back.
+- The ultrasonic module will use the speaker to send out a sound-pulse and wait for an echo to come back.
 - When the module detects an echo, it sends a pulse to the microcontroller over the ECHO wire.
 - The time difference between when the trigger pulse was transmitted and when the echo pulse returned can be used to determine how far the sound has traveled (distance = speed * time).
 
@@ -30,15 +30,15 @@ In your code, you will need to keep track of how long it has taken from the trig
 
 #### `pulseIn_set` Function Spesification
 - inputs:
-  - `pin`: pin number for pulse measurement
-  - `val`: "HIGH" or "LOW". Pulse is measured when this state is detected
+  - `pin`: pin number for pulse measurement.
+  - `val`: "HIGH" or "LOW". Pulse is measured when this state is detected.
   - `numTrials`: number of trials used for average. Default value is 5.
 - returns:
-  - `duration`: an average of pulse length measurements
+  - `duration`: an average of pulse length measurements.
 
 #### `pulseIn_set` Operation
 This function works as follows:
-1. Set `pin` to the OUTPUT mode.
+1. Set `pin` to the `OUTPUT` mode.
 2. Set `pin` to the opposite logic level of `val` and wait a little.
 3. Set `pin` to the logic level of `val`. For the ultrasonic sensor, this will trigger a distance measurement.
 4. Start a timer.
@@ -51,17 +51,16 @@ That is quite a lot going on!
 
 #### Code
 
-You now know all you know to start writing code to interface with the ultrasonic sensor. It can look something like this:
+You now know all you need to start writing code to interface with the ultrasonic sensor. It can look something like this:
 
 ```python
 from Arduino import Arduino
 import time
 
-PORT_NAME = '/dev/tty.usbserial-1420'              # MUST BE UPDATED TO USE THE CORRECT PORT
-PIN_SENSE = 12                  # pin where ultrasic sensor is connected
+PIN_SENSE = 12 # pin where ultrasic sensor is connected
 
 # connect to Arduino
-board = Arduino('115200', port=PORT_NAME)
+board = Arduino()
 print('Connected')
 
 try:
@@ -112,12 +111,11 @@ from Arduino import Arduino
 import time
 import csv # new, for writing to file
 
-PORT_NAME = '/dev/tty.usbserial-1420'              # MUST BE UPDATED TO USE THE CORRECT PORT
 FILE_NAME = 'pendulum_data.csv' # name of file that data will be written to
 PIN_SENSE = 12                  # pin where ultrasic sensor is connected
 
 # connect to Arduino
-board = Arduino('115200', port=PORT_NAME)
+board = Arduino()
 print('Connected')
 
 f = open(FILE_NAME,'a')              # open a file for 'a'ppending
@@ -149,8 +147,9 @@ except KeyboardInterrupt:
     f.close()     # close file gracefully when program is terminated
 ```
 
-### Extra Exercise: Handling Exceptions
-If an obstacle is placed to close to the ultrasonic sensor, or if the obstruction too far away, the number returned may be off. Can you write some lines of code to output zero if the distance-measurement seems suspicious?
-
+## Exercises
+- How fast can you get the sensor to measure data? By reducing the delay too much, you may find that the sensor stops working. You can observe the TX and RX LEDs on the Nano to see the UART activity.
+- Make the program print the values to the screen only occasionally.
+- Add the LED, and set up a circuit that lights up whenever the sensor finds something that is getting too close.
 
 Next: [Module 4: Pendulum Experiment](/4.%20Pendulum%20Experiment/)
