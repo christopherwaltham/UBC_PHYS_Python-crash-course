@@ -1,6 +1,6 @@
 """
-Script to read distances from an ultrasonic sensor using an Arduino 
-microcontroller. Prints the information to a file.  
+Script to read distances from an ultrasonic sensor using an Arduino
+microcontroller. Prints the information to a file.
 """
 
 
@@ -9,7 +9,7 @@ import time
 import csv
 
 FILE_NAME = 'pendulum_data.csv'       # name of file that data will be written to
-PIN_SENSE = 12                        # pin where ultrasic sensor is connected 
+PIN_SENSE = 12                        # pin where ultrasic sensor is connected
 
 # connect to Arduino
 board = Arduino()
@@ -19,7 +19,7 @@ f = open(FILE_NAME,'a')              # open a file for 'a'ppending
 writer = csv.writer(f,delimiter=',') # prepare for writing to file
 
 # Write data-field titles to file
-writer.writerow(['Counter', 'Time (s)', 'Distance (cm)']) 
+writer.writerow(['Counter', 'Time (s)', 'Distance (cm)'])
 
 counter = 0             # to count how many data-points we have collected
 startTime = time.time() # capture current time as datum
@@ -28,7 +28,7 @@ try:
     while True:
         counter = counter + 1 # increment counter
 
-        # make distance measurement
+        # make distance measurement without averaging
         pulseTime = board.pulseIn_set(PIN_SENSE, 'HIGH')
         distance = pulseTime * 0.034 / 2; # in cm
 
@@ -38,10 +38,10 @@ try:
         # print to console every 10 itterations. % is modulo operator
         if counter % 10 == 0:
             print(distance)
-        
+
         time.sleep(0.01) # delay to keep UART bus for getting overloaded
 
 # press ctrl+c while the console is active to terminate the program
 except KeyboardInterrupt:
-    board.close()
-    f.close() # close file gracefully when program is terminated
+    board.close()   # close board connection
+    f.close()       # close file gracefully when program is terminated

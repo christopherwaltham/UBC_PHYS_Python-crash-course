@@ -1,8 +1,8 @@
 # 4. Pendulum Experiment
-The module is an experiment where we use the ultrasonic distance sensor to collect data about a pendulum undergoing damped simple harmonic motion.
+This module is an experiment where we use the ultrasonic distance sensor to collect data from a pendulum undergoing damped simple harmonic motion.
 
 ## Experimental setup and procedure
-The setup for this experiment requires. The most important thing is that the pendulum is aimed squarely at the large, flat surface on the pendulum at all times during the oscillations. This means it is important that you do not make the amplitude of the oscillations too large.
+The setup for this experiment requires a few parts. The most important thing is that the pendulum is aimed squarely at the large, flat surface on the pendulum at all times during the oscillations. This means it is important that you do not make the amplitude of the oscillations too large.
 
 ### Equipment
 - Cardboard
@@ -16,25 +16,24 @@ The setup for this experiment requires. The most important thing is that the pen
 1. Cut out a rectangle in cardboard that is about 5 cm by 10 cm.
 2. Use a hole-punch to make three holes in it. Two holes are in the upper left and right corner for attaching the string, and one is at the bottom center for suspending the mass.
 3. Tie a string through the top holes.
-4. Hang the string on the stand (not sure what this will be yet).
+4. Hang the string on the stand so that it will not rotate.
 5. Position the ultrasonic sensor so that it points directly at the cardboard cutout as the pendulum oscillates.
 
 ![](Images/setup.jpg)
 
 ## Code
-Used the code you developed during the last module to measure the distance and print it to a file. The code below can also be used as a starting point, including a fairly accurate time to distance calibration.
+Use the code you developed during the last module to measure the distance and print it to a file. The code below can also be used as a starting point, including a fairly accurate time to distance calibration.
 
 ```python
 from Arduino import Arduino
 import time
 import csv
 
-PORT_NAME = '/dev/tty.usbserial-1410' # MUST BE UPDATED TO USE THE CORRECT PORT
 FILE_NAME = 'pendulum_data.csv'       # name of file that data will be written to
 PIN_SENSE = 12                        # pin where ultrasic sensor is connected
 
 # connect to Arduino
-board = Arduino('115200', port=PORT_NAME)
+board = Arduino()
 print('Connected')
 
 f = open(FILE_NAME,'a')              # open a file for 'a'ppending
@@ -51,7 +50,7 @@ try:
         counter = counter + 1 # increment counter
 
         # make distance measurement
-        pulseTime = board.pulseIn_set(PIN_SENSE, 'HIGH')
+        pulseTime = board.pulseIn_set(PIN_SENSE, 'HIGH', 1)
         distance = pulseTime * 0.034 / 2; # in cm
 
         # write list of data to file
@@ -65,8 +64,8 @@ try:
 
 # press ctrl+c while the console is active to terminate the program
 except KeyboardInterrupt:
-    board.close()
-    f.close() # close file gracefully when program is terminated
+    board.close()   # close board connection
+    f.close()       # close file gracefully when program is terminated
 ```
 
 ## Procedure
@@ -77,6 +76,16 @@ except KeyboardInterrupt:
 
 
 ## Data Analysis
-For analyzing the data, we can continue using Spyder to write and run code. Another tool designed explicitly for this type of work is known as `Jupyter Notebook`. You can install and launch Jupyter from the Anaconda Navigator in the same way you have been using Spyder. The following instructions have been written using a Jupyter notebook that you can open and copy code from, or that you can download and use as a starting point for your work.
+For analyzing the data, we can continue using Spyder to write and run code. Another tool designed explicitly for this type of work is known as `Jupyter Notebook`.
 
-[Jupyter Notebook with data analysis.](Data_Analysis.ipynb)
+You can install and launch Jupyter from the Anaconda Navigator in the same way you have been using Spyder.
+
+The following instructions have been written using a Jupyter notebook that you can open and copy code from, or that you can download and use as a starting point for your work.
+
+[Data Analysis in Jupyter Notebooks](Data_Analysis.ipynb)
+
+
+Google is your friend. As a starting point, you can take a look at these links:
+
+- [how to download a files from GitHub](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&cad=rja&uact=8&ved=2ahUKEwjT5bGT2OLhAhV8ITQIHa9ADB4QFjABegQIChAK&url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3DGIJdfuAoqFI&usg=AOvVaw022I6S-_6LJeKPyPWS8hCP)
+- [how to use Jupyter](https://www.codecademy.com/articles/how-to-use-jupyter-notebooks)
