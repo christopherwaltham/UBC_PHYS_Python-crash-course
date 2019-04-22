@@ -271,9 +271,9 @@ Sorts a list into ascending order.
 
 
 ## Object Oriented Programming
-Object-oriented programming is a programming paradigm that makes it easy to bundle variables and functions into groups called objects. It makes it possible to think about blocks of code as physical objects that have certain properties and abilities.
+Object-oriented programming is a programming paradigm that makes it possible to bundle variables and functions into groups called objects. This makes it possible to think about blocks of code as physical objects that have properties and abilities.
 
-The primitive data structures available in Python (numbers, strings, lists, etc.) are designed to represent simple things like the size of something, the name of a song, and your favorite colors, respectively.
+The primitive data structures available in Python (numbers, strings, lists, etc.) are designed to represent simple things like the size of something, the name of a song, or your favorite colors.
 
 If we want to represent something more complex, we can use a class. Classes are used to create new user-defined data structures that contain arbitrary information about something. A class can for example store strings and integers corresponding to the name and age of a person.
 
@@ -307,9 +307,8 @@ These methods are like any other functions, except that they are able to access 
 
 If you want to learn more about classes and how you can make your own, [this tutorial](https://realpython.com/python3-object-oriented-programming/) gives a good introduction. For basic programming with Python, it enough to know how you use them.
 
-
 ## Exercises
-- Write a program that computes the sum of the 100 first natural numbers (1,2,3,4..100).
+- Write a program that computes the sum of the 100 first natural numbers (1,2,3,4,...,100).
 - Declare `string = "UBC Physics and Astronomy"`. Make a program that counts the number of 's' characters in this string.
 - Make a function that takes one string as an argument, and returns the number of 's' characters in it. Can you make the character to search for be a parameter as well?
 - Print all prime numbers smaller than 100.
