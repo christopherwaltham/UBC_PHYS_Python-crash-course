@@ -7,18 +7,15 @@ sequentially using the Arduino-Python serial library.
 from Arduino import Arduino
 import time
 
-#portName = 'COM3'                    # example of Windows port name
-portName = '/dev/tty.usbserial-1420'  # exmaple of Mac port name
+board = Arduino()  # find and connect microcontroller
+print('Connected') # confirms the microcontroller has been found
 
-board = Arduino('115200', port=portName)  # find and connect microcontroller
-print('Connected')                        # confirms the microcontroller has been found
-
-# give pins names so they are easy to refference
+# give pins names, so they are easy to reference
 RED   = 3
 GREEN = 5
 BLUE  = 6
 
-# configure A0, A1 and A2 as output pins
+# configure the pins as outputs
 board.pinMode(RED, "OUTPUT")
 board.pinMode(GREEN, "OUTPUT")
 board.pinMode(BLUE, "OUTPUT")
@@ -27,7 +24,6 @@ board.pinMode(BLUE, "OUTPUT")
 board.analogWrite(RED, 0)
 board.analogWrite(GREEN, 0)
 board.analogWrite(BLUE, 0)
-
 
 try:
     while True:
@@ -44,6 +40,6 @@ try:
 
         board.analogWrite(BLUE, 0)      # turn GREEN off
 
-# press ctrl+c while the console is active to terminate program
+# press ctrl+c while the console is active to terminate the program
 except KeyboardInterrupt:
-    board.close()
+    board.close() # close the serial connection

@@ -5,7 +5,7 @@ Now, we are ready to start working with microcontrollers. For this course, we wi
 
 To directly program the Arduino Nano, you will have to use C++. Learning two programming languages at once is not easy. What we have done instead, is upload code to the boards so that you can control it by sending commands from your computer through a serialized interface called UART (see definition below). In Python, you will write code that runs on your computer, and that will send messages to the Arduino to control it. We will use the Arduino-Python3 library to achieve this.
 
-This module relies on a lot of concepts and technologies, some of which you may not have hard of before. There is a glosary and theory section at the end of the lab that you can refference.
+This module relies on a lot of concepts and technologies, some of which you may not have heard of before. There are glossary and theory sections at the end of the lab that you can reference.
 
 ## Task 1: Getting Familiar with the Breadboard
 To understand how the breadboard is connected, use a multimeter to probe the pins.
@@ -20,7 +20,7 @@ Draw a picture of the breadboard and its internal connections in your lab notebo
 We start by using the microcontroller to drive an LED.
 
 ### Circuit
-- Place a 100 to 500 ohm resistor in series with the LED. The resistor limits the current moving through the LED so that it does not overheat and get damaged.
+- Place a 100 to 500-ohm resistor in series with the LED. The resistor limits the current moving through the LED so that it does not overheat and get damaged.
 - Make sure to connect the cathode of the diode to ground. The cathode is the side with the shortest leg and with a small flat notch on the diode housing.
 - Notice that we are connecting the LED to pin D3. This will be important in the next step when we want to control this pin.
 
@@ -47,7 +47,7 @@ board.digitalWrite(3, 'HIGH')   # make LED light up
 board.close()                   # close the connection to the board
 ```
 
-If this does not work, you need to tell the library which port the Arduino is connected to. You do this by passing the port name to the Arduino constructor. A variable `PORT_NAME` is used here. You must update the value to correspond to the correct port on your computer. You can find the port by following [these instructions](Finding_USB_Port_Name.md).
+If this does not work, you need to tell the library which port the Arduino is connected to. You do this by passing the port name to the Arduino constructor. A variable `PORT_NAME` is used here, whose value you must update to correspond to the correct port on your computer. You can find the port by following [these instructions](Finding_USB_Port_Name.md).
 
 ```python
 #PORT_NAME = 'COM3'                   # example of Windows port name
@@ -57,11 +57,10 @@ board = Arduino(port=PORT_NAME)       # find and connect microcontroller
 print('Connected')                    # confirms the microcontroller has been found
 ```
 
-
 Things to note:
 - You must type `'OUTPUT'`, `'HIGH'` and `'LOW'` with the capital letters.
 - If you have problems, try disconnecting and reconnecting the Arduino or restarting the kernel in Spyder.
-- If the LED does not turn on, you can try truning it around to see if it was inserted the wrong way.
+- If the LED does not turn on, you can try turning it around to see if it was inserted the wrong way.
 
 #### Flashing LED
 You can now expand your program to do something more interesting. What about making the LED flash on and off continuously? To achieve this, add the following to the code you just wrote:
@@ -77,31 +76,31 @@ while True:
 
 This is what is called an infinite loop - a loop that will never stop executing. To terminate the program, you have to click the red square stop button located in the top right corner of the Spyder Console.
 
+![stop program execution in Spyder console](Images/stop.png)
 
 #### Controlling LED brightness
-Imagine if the above code was executed with a very small delay between each the LED was turned on and off. It is going to appear as though the LED is half as bright, as it only turned on half the time. By altering the ratio of time the LED is on to how long it is off, we can further control the brightness of the LED.
+Imagine that the above code was executed with a very small delay between each time the LED was turned on and off. It is going to appear as though the LED is half as bright, as it is only turned on half the time. By altering the ratio of time the LED is on to how long it is off, we can further control the brightness of the LED.
 
 The function `analogWrite` continuously turns the output on and off, with a duty cycle specified by the second argument to the function. D = 255 corresponds to a duty cycle of 100% (fully on), and D = 0 corresponds to a duty cycle of 0% (fully off).
 
 Alter your code to use the analog print function. It could look something like this.
 
 ```python
-# import libraries
 from Arduino import Arduino
 
-portName = 'COM3'
+PIN = 3            # pin that the LED is connected to
 
-board = Arduino('115200', port=portName) # find and connect microcontroller
-print('Connected')                       # confirms the microcontroller has been found
+board = Arduino()  # find and connect microcontroller
+print('Connected') # confirms the microcontroller has been found
 
-board.pinMode(5, 'OUTPUT')             # configure pin D5 to be an output pin
+board.pinMode(PIN, 'OUTPUT') # configure pin to be an output pin
+board.analogWrite(PIN, 200)  # set LED to half brightness
 
-board.analogWrite(5, 200)              # set LED to half brightness
+board.close()      # close serial connection
 ```
 
-
 ### Visualizing PWM using Oscilloscope
-Now, use the oscilloscope to see how the voltage to the LED changes with time. Connect the oscilloscope ground probe to the ground rail on the breadboard, and connect the signal probe to the digital output pin D5 on the Arduino that we are using to drive the LED.
+Now, use the oscilloscope to see how the voltage to the LED changes with time. Connect the oscilloscope ground probe to the ground rail on the breadboard, and connect the signal probe to the digital output pin on the Arduino that we are using to drive the LED.
 ![](Images/scope_connection.jpg)
 
 - Turn off the second channel CH2 on the cope, as we are not using it.
@@ -113,7 +112,7 @@ Now, use the oscilloscope to see how the voltage to the LED changes with time. C
 
 ![](Images/scope_measure.png)
 
-- Try changing the duty cycle in code, and see how the shape on your oscilloscope changes.
+- Try changing the duty cycle in your code, and see how the shape on your oscilloscope changes.
 
 #### Question
 Are these measurements what you expect them to be? Does the duty cycle correspond with what you set it to?
@@ -125,30 +124,27 @@ Note:
 If you have time, you can take a look at [this module about transient behaviour](Voltage_Transients.md).
 
 ## Task 3: Controlling an RGB LED
-We are now ready to look at an RGB LED. This is a device that contains a red, green and blue LED in one package. Controlling the relative brightness of the different color-channels will enable us to display just about any color, making this a very cool device to play with.
+We are now ready to look at an RGB LED. This is a device that contains a red, green and blue LED in one package. Controlling the relative brightness of the different color-channels will enable us to display just about any color.
 
 To be able to set the brightness of each pin, we will have to use the PWM enabled pins of the Arduino Nano. You can use pins D3, D5, and D6 as shown in the circuit below.
 
 ![](Images/rgb_led_breadboard.png)
 
-Remember to include current limiting resistors in your circuit, and to update `portName`.
+Remember to include current limiting resistors in your circuit.
 
 The following code will continuously flash the three primary colors for 1 second each.
 
 The `try: except` block is part of Python's error handling functionality. Placing your loop inside this statement enables you to use the shortcut `ctrl` + `c` to terminate the program (the console must be active for this to work). This shortcut is very commonly used to terminate program execution.
 
-The `except` block also closes the serial connection to the board properly whenever the user termiates program execution.
+The `except` block also closes the serial connection to the board properly whenever the user terminates program execution.
 
 ```python
 # import libraries
 from Arduino import Arduino
 import time
 
-PORT_NAME = 'COM3'                      # example of Windows port name
-#portName = '/dev/tty.usbserial-1410'   # exmaple of Mac port name
-
-board = Arduino('115200', port=PORT_NAME) # find and connect microcontroller
-print('Connected')                        # confirms the microcontroller has been found
+board = Arduino()  # find and connect microcontroller
+print('Connected') # confirms the microcontroller has been found
 
 # give pins names, so they are easy to reference
 RED   = 3
@@ -165,18 +161,17 @@ board.analogWrite(RED, 0)
 board.analogWrite(GREEN, 0)
 board.analogWrite(BLUE, 0)
 
-
 try:
     while True:
-        board.analogWrite(RED, 255)     # set RED to full brightness (3.3V)
+        board.analogWrite(RED, 255)     # set RED to full brightness
         time.sleep(1)                   # wait 1 second
 
         board.analogWrite(RED, 0)       # turn RED off
-        board.analogWrite(GREEN, 255)   # set GREEN to full brightness (3.3V)
+        board.analogWrite(GREEN, 255)   # set GREEN to full brightness
         time.sleep(1)                   # wait 1 second
 
         board.analogWrite(GREEN, 0)     # turn RED off
-        board.analogWrite(BLUE, 255)    # set GREEN to full brightness (3.3V)
+        board.analogWrite(BLUE, 255)    # set GREEN to full brightness
         time.sleep(1)                   # wait 1 second
 
         board.analogWrite(BLUE, 0)      # turn GREEN off
@@ -196,7 +191,7 @@ You can now modify the code.
 ## Theory
 
 ### DMM and Oscilloscope
-When we start to work with hardware, it is important that we have the tools to visualize what is happening. This will enable us to understand what is going on at all steps, and it will give us the ability to debug the system systematically if something is not working as we expect it to.
+When we start to work with hardware, it is important that we have the tools to visualize what is happening. This enables us to understand what is going on at all steps, and it gives us the ability to debug the system systematically if something is not working as we expect it to.
 
 - The DMM (digital multimeter) is a great tool for measuring any parameter that does not change with time, such as resistance and current and voltage at DC (direct current).
 - The oscilloscope is designed for measuring voltages that vary over time. This enables you to observe voltages at AC (alternating current). The oscilloscope also makes it possible to capture what is commonly referred to as transient behavior - that is, events that happen for a limited period of time as an external trigger moves a system form one equilibrium position to another.
@@ -234,6 +229,7 @@ The Arduino Nano has many pins that each can be configured to perform some funct
 Because the Arduino is a digital device, it does not know how to produce analog voltages. That is, voltages other than 0V and 5V. To produce an intermediate voltage, we can, however, use a trick called PWM (pulse width modulation). By turning the pin to HIGH and LOW very rapidly and varying the amount of time spent in the HIGH state relative to the time spent in the LOW state, it is possible to manipulate the average voltage so that it becomes what we want. If we want to produce 2.5V for example, we just have to spend as much time in the HIGH state as in the LOW state.
 
 The amount of time spent in the HIGH state vs. the LOW state is characterized by a parameter called the duty cycle `D`, given by
+
 <div style="text-align:center">
 <img src ="Images/D_eq.png"/>
 </div>
@@ -243,9 +239,7 @@ The amount of time spent in the HIGH state vs. the LOW state is characterized by
 Note that this is not a true analog voltage. For motors, diodes and other devices, it is ok to use PWM to achieve an analog voltage. It is not possible to use this trick for many other applications, such as powering digital circuits.
 
 ### The Arduino-Python Library
-The source for the Arduino-Python library can be found [here](https://github.com/thearn/Python-Arduino-Command-API). This repository includes a description of features and the source code that you can have a look at to figure out what other functions you can use with the Arduino board. In the next module, we will use the `pulseIn_set` function to measure the distance to objects using an ultrasonic range finder.
-
-Next: [Module 3: Ultrasonic Range Sensing](/3.%20Ultrasonic%20Range%20Sensing/)
+The source for the Arduino-Python3 library can be found [here](https://github.com/mkals/Arduino-Python3-Command-API). This repository includes a description of features and the source code that you can have a look at to figure out what other functions you can use with the Arduino board. In the next module, we will use the `pulseIn_set` function to measure the distance to objects using an ultrasonic range finder.
 
 
 ## Terms
@@ -265,3 +259,6 @@ The following list gives a brief explanation of each of the main concepts, with 
 - [Digital signals](https://en.wikipedia.org/wiki/Digital_signal) are signals where information is communicated in discrete values (such as LOW and HIGH).
 - [Analog signals](https://en.wikipedia.org/wiki/Analog_signal) are signals where information is communicated using a continuous range of values.
 - [PWM](https://www.arduino.cc/en/tutorial/PWM) (Pulse Width Modulation) is a technique where a digital signal is rapidly turned on and off to produce what amounts to an analog signal.
+
+
+Next: [Module 3: Ultrasonic Range Sensing](/3.%20Ultrasonic%20Range%20Sensing/)

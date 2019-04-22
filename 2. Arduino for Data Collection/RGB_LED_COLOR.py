@@ -6,9 +6,7 @@ Program that makes a method to display RBG color codes on an RGB LED.
 from Arduino import Arduino
 import time
 
-portName = 'COM3'
-
-board = Arduino('115200', port=portName)  # find and connect microcontroller
+board = Arduino()  # find and connect microcontroller
 print('Connected')                        # confirms the microcontroller has been found
 
 # Pin numbers
