@@ -13,4 +13,4 @@ A typical port name for Windows is `COM3`
 
 A typical port name for macOS is `/dev/tty.usbserial-1410`
 
-If you cannot find a port with this type of format, it might be that you have to install the driver for the board manually. The [ch340g-ch34g-ch34x-mac-os-x-driver](https://github.com/adrianmihalko/ch340g-ch34g-ch34x-mac-os-x-driver) can be downloaded and installed using [Homebrew](https://brew.sh) (a package manager for Mac). Follow the installation instrucitons, or ask for help. 
+If you cannot find a port with this type of format, it might be that you have to install the driver for the board manually. The [ch340g-ch34g-ch34x-mac-os-x-driver](https://github.com/adrianmihalko/ch340g-ch34g-ch34x-mac-os-x-driver) can be downloaded and installed using [Homebrew](https://brew.sh) (a package manager for Mac). Follow the installation instructions, or ask for help.
