@@ -305,7 +305,7 @@ which returns the version of the Arduino-Python3 library that is running on the 
 
 These methods are like any other functions, except that they are able to access properties associated with the object instance (such as the serial connection to the Arduino board).
 
-If you want to learn more about classes and how you can make your own, [this tutorial](https://realpython.com/python3-object-oriented-programming/) gives a good introduction. For basic programming with Python, it enough to know how you use them.
+If you want to learn more about classes and how you can make your own, [this tutorial](https://realpython.com/python3-object-oriented-programming/) gives a good introduction. For basic programming with Python, it is enough to know how you use them.
 
 ## Exercises
 - Write a program that computes the sum of the 100 first natural numbers (1,2,3,4,...,100).
