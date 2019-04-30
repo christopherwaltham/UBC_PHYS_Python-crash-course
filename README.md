@@ -12,6 +12,7 @@ The training is divided into modules. Start with module zero to get the programs
 2. [Arduino for Data Collection](/2.%20Arduino%20for%20Data%20Collection/)
 3. [Ultrasonic Range Sensing](/3.%20Ultrasonic%20Range%20Sensing/)
 4. [Pendulum Experiment](/4.%20Pendulum%20Experiment/)
+5. [Extra Exersises](/5.%20Extra%20Exersises/)
 
 ## Workshop goals
 - to get started with the Python language and control a microcontroller with Python
