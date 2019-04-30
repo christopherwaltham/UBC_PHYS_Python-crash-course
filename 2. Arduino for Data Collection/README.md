@@ -37,6 +37,7 @@ The Arduino library may be able to find the port name automatically. You can try
 ```python
 # import libraries
 from Arduino import Arduino
+import time
 
 board = Arduino()               # find and connect microcontroller
 print('Connected')              # confirms the microcontroller has been found
