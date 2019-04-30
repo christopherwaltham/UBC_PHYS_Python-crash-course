@@ -22,6 +22,7 @@ Getting a distance measurement from the module works like this:
 - When the module detects an echo, it sends a pulse to the microcontroller over the ECHO wire.
 - The time difference between when the trigger pulse was transmitted and when the echo pulse returned can be used to determine how far the sound has traveled (distance = speed * time).
 
+![](Images/ultrasonic_breadboard.png)
 
 ## Code
 ### Get Distance Measurements
