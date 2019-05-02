@@ -8,30 +8,29 @@ Script to interface with temperature and humidity sensor
 @author: mkals
 """
 
-from arduino import Arduino
+from Arduino import Arduino
 import time
 
-PORT_NAME = '/dev/tty.usbserial-1410'    # MUST BE UPDATED TO USE THE CORRECT PORT
 PIN = 7                                  # pin where temperature sensor is connected
 
 # connect to Arduino
-board = Arduino('115200', port=PORT_NAME)
+board = Arduino()
 print('Connected')
 
 try:
     while True:
         # make distance measurement
-        
+
         data = board.dht(PIN)
-        
-        [humidity, temperature, heatIndex] = data 
-        
+
+        [humidity, temperature, heatIndex] = data
+
         reply =  "Humidity = " + str(humidity) + " % \t"
         reply += "Temperature = " + str(temperature) + " ˙C \t"
         reply += "Heat Index = " + str(heatIndex) + " ˙C"
 
         print(reply)
-        
+
         time.sleep(1) # delay to keep UART bus for getting overloaded
 
 except KeyboardInterrupt:
