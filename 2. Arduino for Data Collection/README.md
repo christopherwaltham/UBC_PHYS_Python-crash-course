@@ -178,7 +178,7 @@ try:
         board.analogWrite(BLUE, 0)      # turn GREEN off
 
 # press ctrl+c while the console is active to terminate the program
-except KeyboardInterrupt:
+except:
     board.close() # close the serial connection
 ```
 

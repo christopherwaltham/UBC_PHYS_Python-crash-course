@@ -63,7 +63,7 @@ try:
         time.sleep(0.01) # delay to keep UART bus for getting overloaded
 
 # press ctrl+c while the console is active to terminate the program
-except KeyboardInterrupt:
+except:
     board.close()   # close board connection
     f.close()       # close file gracefully when program is terminated
 ```

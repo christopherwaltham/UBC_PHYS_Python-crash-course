@@ -20,7 +20,7 @@ print('Connected') # confirms the microcontroller has been found
 board.pinMode(pin, 'OUTPUT')   # configure pin D5 to be an output pin
 
 # error handeling block
-try: 
+try:
 
     # enter infinite loop
     while True:
@@ -29,5 +29,5 @@ try:
         board.digitalWrite(pin, 'HIGH')  # set pin HIGH (5V)
         time.sleep(1)                    # wait 1 second
 
-except KeyboardInterrupt:   # interrupt handeler
+except:   # interrupt handeler
     board.close()           # close serial connection

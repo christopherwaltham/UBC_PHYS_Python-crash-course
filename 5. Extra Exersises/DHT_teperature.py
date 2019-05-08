@@ -33,5 +33,5 @@ try:
 
         time.sleep(1) # delay to keep UART bus for getting overloaded
 
-except KeyboardInterrupt:
+except:
     board.close() # close serial connection
