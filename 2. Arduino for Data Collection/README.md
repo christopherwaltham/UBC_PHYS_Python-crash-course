@@ -3,7 +3,9 @@
 ## Introduction
 Now, we are ready to start working with microcontrollers. For this course, we will use the [Arduino Nano](https://store.arduino.cc/usa/arduino-nano) which is a small board based on the [ATmega328P](https://www.microchip.com/wwwproducts/en/ATmega328p) microcontroller.
 
-To directly program the Arduino Nano, you will have to use C++. Learning two programming languages at once is not easy. What we have done instead, is upload code to the boards so that you can control it by sending commands from your computer through a serialized interface called UART (see definition below). In Python, you will write code that runs on your computer, and that will send messages to the Arduino to control it. We will use the Arduino-Python3 library to achieve this.
+To directly program the Arduino Nano, you will have to use C++. Learning two programming languages at once is not easy. What we have done instead, is upload code to the boards so that you can control it by sending commands from your computer through a serialized interface called UART (see definition below). In Python, you will write code that runs on your computer, and that will send messages to the Arduino to control it.
+
+We will use the [Arduino-Python3](https://github.com/mkals/Arduino-Python3-Command-API) library to achieve this.
 
 This module relies on a lot of concepts and technologies, some of which you may not have heard of before. There are glossary and theory sections at the end of the lab that you can reference.
 
