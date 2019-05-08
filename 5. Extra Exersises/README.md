@@ -7,14 +7,21 @@ Spyder is a development environment designed for Python. Similarly, the Arduino 
 
 You can download the Arduino IDE from [here](https://www.arduino.cc/en/Main/Software). A good exercise is to try to recreate some of the programs you made with the Arduino-Python3 library, but now directly in the Arduino IDE.
 
+## Arduino IDE setup for Arduino Nano
+After opening the Arduino IDE, go to the menu dropdown called `Tools` and select the following:
+- For `Board`, use `Arduino Nano`
+- For `Processor`, use `ATmega328p (Old Bootloader)`
+    - try the others as well if you have issues connecting to the board
+- For `Port`, use the port that the Arduino is connected to
+    - typically something like COM3 Windows and /dev/cu.usbserial-1400 for Mac
+
+You should now be able to hit `Upload` and have the program currently loaded in the editor be loaded to the board.
 
 ## Suggested Exercises
-- humidity sensor, using DHT function in the Arduino-Python3 library
 - generate a live plot of data from the ultrasonic sensor
 - research on the web/datasheets the protocol used by the temperature and humidity sensor and decode its messages manually on the oscilloscope.
-- [set up an LCD display](Screen Display Tutorial.md) with temp/humidity sensor to make a mini weather station.
 - measure, on the scope, (a) how quickly you can toggle a GPIO pin in a loop with the Arduino-Python3 library. Then (b) do it again inside in the Arduino IDE. As an advanced bonus, (c) read up in the ATMEGA-328P data sheet how to set a GPIO pin directly using a register write (instead of using the Arduino library digitalWrite function).
-- play with servo motors - the EP project lab must have hundreds.
+- play with servo motors.
 - in python, print an ASCII table - learn about chr() and ord() and ASCII encoding.
 - learn how numbers are stored on computers: integer types, signed/unsigned - 2's complement. Floating point types.
 

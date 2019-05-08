@@ -17,6 +17,7 @@ print('Connected')
 
 f = open(FILE_NAME, 'a')                          # open a file for 'a'ppending
 writer = csv.writer(f, delimiter=',', newline='') # prepare for writing to file
+# on Mac, remove the newline='' argument
 
 # Write data-field titles to file
 writer.writerow(['Counter', 'Time (s)', 'Distance (cm)'])
